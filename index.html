@@ -193,7 +193,7 @@ section{scroll-margin-top:16px}
 /* 사은품 */
 .gifts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
 .gift{background:#fff;border-radius:20px;padding:20px 14px;width:calc(20% - 10px);min-width:150px;box-shadow:0 16px 36px -26px rgba(30,20,90,.4)}
-.gift .em{font-size:34px;line-height:1}
+.gift .gift-img{display:block;width:100%;height:150px;object-fit:contain;margin:0 auto;border-radius:10px}
 .gift b{display:block;margin-top:10px;font-size:15px}
 .gift s{display:block;margin-top:6px;font-size:13px;color:#9a9cb2}
 .gift em{display:inline-block;margin-top:6px;font-style:normal;font-weight:900;font-size:14px;background:var(--lime);color:var(--ink);border-radius:99px;padding:2px 12px}
@@ -496,23 +496,24 @@ var CONFIG = {
     {id:"p109", name:"통신요금(요금제별 상이)", fee:109000}   // 월 통신요금 가정값 - 실제 기준 요금제로 교체
   ],
   /* official: 통신 3사 공식 공통지원금 중 최대(원) / extra: 추가지원금(원, 공통지원금의 15%) / list: 출고가(원)
+     site: 싹딜 최저가의 할인율(pct)·실구매가(price)·통신사(carrier)·가입 유형(join), 공식 지원금과 별도 기준 /
      carrier: 최대 금액을 주는 통신사('3사 동일' = 3사 모두 같은 금액) / img: 기기 이미지 / store: 비밀지원금(숨김 해제 시에만 사용) */
   models: [
-    {id:"zfold8", brand:"galaxy", name:"갤럭시 Z 폴드8 와이드", spec:"256GB", img:"images/F791N_G.jpg", list:2278100, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동"},
-    {id:"zf8",    brand:"galaxy", name:"갤럭시 Z 플립8",        spec:"256GB", img:"images/F776N_G.jpg", list:1683000, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동"},
-    {id:"s26",    brand:"galaxy", name:"갤럭시 S26",           spec:"256GB", img:"images/S942_B.jpg",  list:1254000, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동"},
-    {id:"s26u",   brand:"galaxy", name:"갤럭시 S26 울트라",     spec:"256GB", img:"images/S948_B.jpg",  list:1797400, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동"},
-    {id:"i18p",   brand:"iphone", name:"아이폰 18 프로",        spec:"256GB", img:"images/18P_BG.jpg",  list:1991000, official:450000, extra:67500, carrier:"3사 동일", join:"번호이동"},
-    {id:"i18pm",  brand:"iphone", name:"아이폰 18 프로 맥스",    spec:"256GB", img:"images/18P_BG.jpg",  list:2200000, official:250000, extra:37500, carrier:"KT",      join:"번호이동"},
-    {id:"i17",    brand:"iphone", name:"아이폰 17",            spec:"256GB", img:"images/17_B.jpg",    list:1452000, official:550000, extra:82500, carrier:"LG U+",   join:"번호이동"},
-    {id:"i17p",   brand:"iphone", name:"아이폰 17 프로",        spec:"256GB", img:"images/17P_S.jpg",   list:1782000, official:550000, extra:82500, carrier:"LG U+",   join:"번호이동"}
+    {id:"zfold8", brand:"galaxy", name:"갤럭시 Z 폴드8 와이드", spec:"256GB", img:"images/F791N_G.jpg", list:2278100, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동", site:{pct:38, price:1408100, carrier:"SKT", join:"번호이동"}},
+    {id:"zf8",    brand:"galaxy", name:"갤럭시 Z 플립8",        spec:"256GB", img:"images/F776N_G.jpg", list:1683000, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동", site:{pct:52, price:813000, carrier:"SKT", join:"번호이동"}},
+    {id:"s26",    brand:"galaxy", name:"갤럭시 S26",           spec:"256GB", img:"images/S942_B.jpg",  list:1254000, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동", site:{pct:93, price:94000, carrier:"LG U+", join:"번호이동"}},
+    {id:"s26u",   brand:"galaxy", name:"갤럭시 S26 울트라",     spec:"256GB", img:"images/S948_B.jpg",  list:1797400, official:500000, extra:75000, carrier:"3사 동일", join:"번호이동", site:{pct:65, price:637400, carrier:"LG U+", join:"번호이동"}},
+    {id:"i18p",   brand:"iphone", name:"아이폰 18 프로",        spec:"256GB", img:"images/18P_BG.jpg",  list:1991000, official:450000, extra:67500, carrier:"3사 동일", join:"번호이동", site:{pct:23, price:1540000, carrier:"SKT", join:"기기변경"}},
+    {id:"i18pm",  brand:"iphone", name:"아이폰 18 프로 맥스",    spec:"256GB", img:"images/18P_BG.jpg",  list:2200000, official:250000, extra:37500, carrier:"KT",      join:"번호이동", site:{pct:10, price:1970000, carrier:"SKT", join:"기기변경"}},
+    {id:"i17",    brand:"iphone", name:"아이폰 17",            spec:"256GB", img:"images/17_B.jpg",    list:1452000, official:550000, extra:82500, carrier:"LG U+",   join:"번호이동", site:{pct:88, price:157000, carrier:"SKT", join:"번호이동"}},
+    {id:"i17p",   brand:"iphone", name:"아이폰 17 프로",        spec:"256GB", img:"images/17P_S.jpg",   list:1782000, official:550000, extra:82500, carrier:"LG U+",   join:"번호이동", site:{pct:63, price:660000, carrier:"SKT", join:"번호이동"}}
   ],
-  /* 사은품(택1) · list: 정가(원) - 예시값 */
+  /* 사은품(택1) · img: 상품 이미지 / list: 정가(원) - 예시값 */
   gifts: [
-    {em:"🔌", name:"초고속 충전기 세트", list:35000},
-    {em:"🔋", name:"보조배터리 10,000mAh", list:39000},
-    {em:"⚡", name:"고속 무선충전 패드",    list:45000},
-    {em:"📱", name:"케이스 + 필름 세트",    list:49000}
+    {img:"images/gift-charge.jpg", name:"초고속 충전기 세트", list:35000},
+    {img:"images/gift-battery.jpg", name:"보조배터리 10,000mAh", list:39000},
+    {img:"images/gift-pad.jpg", name:"고속 무선충전 패드",    list:45000},
+    {img:"images/gift-case.jpg", name:"케이스 + 필름 세트",    list:49000}
   ],
   /* 사업자 정보: sakd.co.kr 푸터·개인정보처리방침 기준 */
   company:"제이에이치", ceo:"양진혁", bizno:"349-03-03198",
@@ -543,7 +544,7 @@ var CONFIG = {
     if (m.official != null || m.support != null) {   /* 번호이동 기준 단일 지원 방식 */
       var st0 = C.hideSecret ? 0 : (m.store || 0);
       var base = m.official != null ? m.official : m.support, ex = m.official != null ? (m.extra || 0) : 0;
-      var buy0 = (m.official != null ? (m.list - base - ex) : (m.final != null ? m.final : m.list - m.support)) - st0, dev0 = r10(buy0/C.months);
+      var buy0 = m.site ? m.site.price : (m.official != null ? (m.list - base - ex) : (m.final != null ? m.final : m.list - m.support)) - st0, dev0 = r10(buy0/C.months);
       var one = {method:'port', port:true, sub:base, extra:ex, store:st0, buy:buy0, dev:dev0, fee:plan.fee,
                  monthly:dev0+plan.fee, total:(dev0+plan.fee)*C.months, benefit:base+ex+st0};
       return {pub:one, sel:one, best:one, port:true};
@@ -639,7 +640,7 @@ var CONFIG = {
   function quote(){
     if (!state.model) return null;
     var m = byId(C.models, state.model), p = byId(C.plans, state.plan), b = calc(m,p).best;
-    return {model:m.name, plan:p.name, method:methodName(b.method), monthly:b.monthly, buy:b.buy, port:!!b.port, benefit:b.benefit, list:m.list};
+    return {model:m.name, plan:p.name, method:m.site ? m.site.carrier + ' · ' + m.site.join : methodName(b.method), monthly:b.monthly, buy:b.buy, port:!!b.port, benefit:b.benefit, list:m.list};
   }
   function syncSummary(){
     var q = quote();
@@ -675,14 +676,14 @@ var CONFIG = {
       var row = function(l, x, y){ return '<tr><th>' + l + '</th><td>' + x + '</td><td>' + y + '</td></tr>'; };
       var row1 = function(l, x){ return '<tr><th>' + l + '</th><td>' + x + '</td></tr>'; };
       if (r.port) {
-        var o = r.best, pct = Math.round((m.list - o.buy) / m.list * 100), sup = o.sub + o.extra;
+        var o = r.best, pct = m.site ? m.site.pct : Math.round((m.list - o.buy) / m.list * 100), sup = o.sub + o.extra;
         return '<article class="pcard">' +
           (m.img ? '<div class="shot"><img src="' + m.img + '" alt="' + m.name + ' 제품 이미지" width="190" height="190"></div>' : '') +
           '<h3>' + m.name + '</h3>' +
           '<p class="list"><span class="carrier">' + m.carrier + ' · ' + m.join + ' · ' + m.spec + '</span></p>' +
-          '<p class="list">출고가 <s>' + won(m.list) + '원</s> <span class="sup">지원금 ' + (sup % 10000 === 0 ? (sup / 10000) + '만원' : won(sup) + '원') + '</span></p>' +
+          '<p class="list">출고가 <s>' + won(m.list) + '원</s> <span class="sup">지원금 ' + (sup % 10000 === 0 ? (sup / 10000) + '만원' : won(sup) + '원') + ' +@</span></p>' +
           '<p class="cut"><em>' + pct + '%</em><b>' + won(o.buy) + '원</b></p>' +
-          '<p class="how">' + m.join + ' 기준 실구매가(예상)</p>' +
+          '<p class="how">' + (m.site ? m.site.carrier + ' · ' + m.site.join : m.join) + ' 기준 실구매가(예상)</p>' +
           '<span class="ben">총 혜택 ' + won(o.benefit) + '원' + (C.hideSecret ? ' <em>+@</em>' : '') + '</span>' +
           '<button class="btn" data-pick="' + m.id + '">이 모델로 견적 받기</button>' +
           '<details class="more"><summary>상세 내역 보기</summary><table class="rc"><thead><tr><th></th><td>' + m.join + ' 기준</td></tr></thead><tbody>' +
@@ -716,8 +717,8 @@ var CONFIG = {
     var noteEl = $('#priceNote');
     if (isPortMode()) {
       noteEl.innerHTML =
-        '<span class="n1">* 번호이동 가입 기준 · 통신 3사 공식 지원금(' + C.dataDate + ' 확인)을 뺀 예상 실구매가</span><br>' +
-        '<span class="n2">(할부수수료·부가세 별도, 조건에 따라 상담 후 추가 지원)</span>' +
+        '<span class="n1">* 공통·추가지원금은 통신 3사 공식 기준(' + C.dataDate + ' 확인) · 할인율·실구매가는 싹딜 사이트 최저가 기준</span><br>' +
+        '<span class="n2">(가격 적용 통신사·가입 유형은 모델별 표기 참고, 할부수수료·부가세 별도, 조건에 따라 상담 후 추가 지원)</span>' +
         (C.hideSecret ? '<strong class="n3">비밀지원금은 상담 후 안내되며<br>위 금액에서 추가로 차감됩니다.</strong>' : '');
     } else {
       noteEl.textContent = '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 통신 3사 공식 지원금 최대 금액(' + C.dataDate + ' 확인)' + (C.hideSecret ? ' 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '');
@@ -726,7 +727,7 @@ var CONFIG = {
 
   /* ---------- 사은품 ---------- */
   $('#giftList').innerHTML = C.gifts.map(function(g){
-    return '<div class="gift reveal"><div class="em">' + g.em + '</div><b>' + g.name + '</b><s>정가 ' + won(g.list) + '원</s><em>무료</em></div>';
+    return '<div class="gift reveal"><img class="gift-img" src="' + g.img + '" alt="' + g.name + ' 제품 이미지" width="500" height="500" loading="lazy" decoding="async"><b>' + g.name + '</b><s>정가 ' + won(g.list) + '원</s><em>무료</em></div>';
   }).join('');
 
   /* ---------- 개인정보 · 연락처 ---------- */
