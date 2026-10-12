@@ -152,6 +152,7 @@ section{scroll-margin-top:72px}
 .pills{display:inline-flex;gap:4px;padding:5px;border-radius:99px;background:#e8e9f4;flex-wrap:wrap;justify-content:center}
 .pills button{border:0;background:transparent;padding:10px 18px;border-radius:99px;font-weight:800;color:#5a5c78;cursor:pointer;font-size:15px;line-height:1.2}
 .pills button small{display:block;font-weight:600;font-size:11.5px;opacity:.8}
+.oneplan{display:inline-block;padding:10px 18px;font-size:14px;font-weight:700;color:var(--ink)}
 .pills button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 6px 14px -8px rgba(30,20,90,.5)}
 .pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px;align-items:start}
 .pcard{background:#fff;border-radius:22px;box-shadow:0 16px 36px -24px rgba(30,20,90,.4);padding:24px 18px 18px}
@@ -276,7 +277,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
       <p class="sub">상담 신청하시면 이렇게 받을 수 있어요.</p>
     </div>
     <div class="bgrid" id="benefitList"></div>
-    <p class="note">* 모델·요금제·가입 유형에 따라 달라지는 예시 금액입니다. 공시지원과 선택약정은 중복 적용되지 않습니다.</p>
+    <p class="note">* 통신 3사(SKT·KT·LG U+) 공식 지원금 조회 페이지 2026.10.12 확인 기준이며 모델·요금제·가입 유형에 따라 달라질 수 있습니다. 공통지원금과 선택약정 요금할인은 중복 적용되지 않으며, 추가지원금은 두 방식 모두에 적용됩니다.</p>
   </div>
 </section>
 
@@ -314,7 +315,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
     <div class="faq">
       <details class="q"><summary>상담만 받아도 되나요?</summary><p>네, 상담과 견적은 무료이며 가입은 선택입니다.</p></details>
       <details class="q"><summary>표시된 금액이 실제와 같은가요?</summary><p>기본 조건 기준의 금액이며, 가입 유형·카드·결합 여부에 따라 달라질 수 있어 가입 전에 최종 금액을 안내드립니다.</p></details>
-      <details class="q"><summary>공시지원과 선택약정 중 뭐가 유리한가요?</summary><p>요금제에 따라 달라집니다. 가격표에서 더 저렴한 방식을 자동으로 보여드립니다.</p></details>
+      <details class="q"><summary>공통지원금과 선택약정 중 뭐가 유리한가요?</summary><p>요금제와 모델에 따라 달라집니다. 가격표에서 두 방식을 나란히 비교해 더 저렴한 쪽에 ★를 표시합니다. 추가지원금은 어느 쪽을 선택해도 적용됩니다.</p></details>
       <details class="q"><summary>사은품은 언제 받나요?</summary><p>개통 완료 후 안내드린 방식으로 제공되며, 상세 시기는 상담 시 알려드립니다.</p></details>
     </div>
   </div>
@@ -327,7 +328,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
     <p>상호: <span data-bind="company">[상호명]</span> | 대표자: <span data-bind="ceo">[대표자명]</span> | 사업자등록번호: <span data-bind="bizno">[000-00-00000]</span></p>
     <p>통신판매업 신고번호: <span data-bind="mailorder">[제0000-지역-0000호]</span> | 주소: <span data-bind="address">[사업장 주소]</span></p>
     <p>고객센터: <span data-bind="phone">1544-5643</span> | 이메일: <span data-bind="email">[email@example.com]</span> | 개인정보책임자: <span data-bind="privacyOfficer">[성명]</span></p>
-    <p class="legal">본 페이지의 금액은 예시이며 요금제, 약정, 가입 유형, 카드·결합 조건, 재고에 따라 달라질 수 있습니다. 월 납부액은 출고가에서 지원금을 뺀 실구매가를 할부 개월 수로 나눈 값에 월 통신요금을 더한 금액이며, 할부수수료·부가세·부가서비스 요금은 별도입니다. 삼성, 갤럭시, Apple, 아이폰 등 상표는 각 권리자에게 있습니다.</p>
+    <p class="legal">공통지원금·추가지원금·출고가는 SKT, KT, LG U+ 공식 지원금 조회 페이지(2026.10.12 확인)에 게시된 256GB 모델 기준 최대 금액이며, 요금제·가입 유형·공시일에 따라 수시로 변경될 수 있습니다. 월 납부액은 출고가에서 지원금을 뺀 실구매가를 할부 개월 수로 나눈 값에 월 통신요금(선택약정은 25% 할인 적용)을 더한 금액이며, 할부수수료·부가세·부가서비스 요금은 별도입니다. 사은품 및 제휴카드 혜택은 판매점 조건에 따르며 변경될 수 있습니다. 삼성, 갤럭시, Apple, 아이폰 등 상표는 각 권리자에게 있습니다.</p>
   </div>
 </footer>
 
@@ -338,32 +339,34 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
 
 <script>
 /* ================== 설정: 여기만 수정하면 됩니다 ==================
-   ※ 아래 금액은 모두 '예시값'입니다. 실제 출고가·지원금·요금으로 교체하세요. */
+   ■ 공통지원금·추가지원금·출고가: SKT 다이렉트샵 / KT 다이렉트샵 / LG U+ 공식 '휴대폰 지원금' 조회 페이지
+     (2026-10-12 확인) 중 모델별 최대 금액, 256GB 기준.
+     - SKT: 요금제 베스트 109 · 기기변경 / KT: 초이스90 / LG U+: 플러스플랜95 (각 사 조회 페이지 기본값)
+     - 지원금은 요금제·가입유형·공시일에 따라 수시로 바뀌므로 게시 전·변경 시 재확인 필요
+   ■ 비밀지원금(store)·사은품(gifts)은 판매점 자체 조건이라 예시값입니다. 실제 값으로 교체하세요. */
 var CONFIG = {
   brand: "브랜드명", phone: "1544-5643", kakaoUrl: "",
   formEndpoint: "",             // 신청 데이터 수신 URL (비우면 데모 모드: 전송되지 않음)
   hideSecret: true,             // true: 비밀지원금 금액을 숨기고 "상담 후 안내"로 표시 (가격·혜택 합계에서도 제외)
+  dataDate: "2026.10.12",       // 지원금 확인 기준일
   months: 24,                   // 할부 개월 수
-  extraRate: 0.15,              // 추가지원금 비율(공시지원금 대비)
   selectRate: 0.25,             // 선택약정 요금 할인율
-  cardMonthly: 20000,           // 제휴카드 월 최대 할인(원)
-  defaultPlan: "p69",
+  cardMonthly: 20000,           // 제휴카드 월 최대 할인(원) - 예시값
+  defaultPlan: "p109",
   plans: [
-    {id:"p55", name:"5G 라이트",   fee:55000},
-    {id:"p69", name:"5G 스탠다드", fee:69000},
-    {id:"p85", name:"5G 프리미엄", fee:85000}
+    {id:"p109", name:"월 10.9만원대 요금제", fee:109000}   // SKT 베스트 109 기준(3사 최대 지원금 구간)
   ],
-  /* list: 출고가 / subsidy: 공시지원금 / store: 비밀지원금 (판매점 자체 할인, 모두 원) */
+  /* list: 출고가 / subsidy: 공통지원금 / extra: 추가지원금(공식 표기값) / store: 비밀지원금(예시) — 모두 원 */
   models: [
-    {id:"s25",   brand:"galaxy", name:"갤럭시 S25",          list:1155000, subsidy:350000, store:150000},
-    {id:"zf7",   brand:"galaxy", name:"갤럭시 Z 플립7",       list:1500000, subsidy:400000, store:200000},
-    {id:"zfold8",brand:"galaxy", name:"갤럭시 Z 폴드8",       list:2200000, subsidy:500000, store:300000},
-    {id:"i18p",  brand:"iphone", name:"아이폰 18 프로",       list:1800000, subsidy:270000, store:170000},
-    {id:"i18pm", brand:"iphone", name:"아이폰 18 프로 맥스",   list:2000000, subsidy:300000, store:200000},
-    {id:"i17",   brand:"iphone", name:"아이폰 17",           list:1250000, subsidy:200000, store:100000},
-    {id:"i17p",  brand:"iphone", name:"아이폰 17 프로",       list:1700000, subsidy:250000, store:150000}
+    {id:"s25",    brand:"galaxy", name:"갤럭시 S25",          list:1155000, subsidy:500000, extra:75000,  store:150000},
+    {id:"zf7",    brand:"galaxy", name:"갤럭시 Z 플립7",       list:1485000, subsidy:500000, extra:75000,  store:200000},
+    {id:"zfold8", brand:"galaxy", name:"갤럭시 Z 폴드8",       list:2278100, subsidy:500000, extra:75000,  store:300000},
+    {id:"i18p",   brand:"iphone", name:"아이폰 18 프로",       list:1991000, subsidy:450000, extra:67500,  store:170000},
+    {id:"i18pm",  brand:"iphone", name:"아이폰 18 프로 맥스",   list:2200000, subsidy:220000, extra:33000,  store:200000},
+    {id:"i17",    brand:"iphone", name:"아이폰 17",           list:1452000, subsidy:550000, extra:82500,  store:100000},
+    {id:"i17p",   brand:"iphone", name:"아이폰 17 프로",       list:1782000, subsidy:450000, extra:82500,  store:150000}
   ],
-  /* 사은품(택1) · list: 정가(원) */
+  /* 사은품(택1) · list: 정가(원) - 예시값 */
   gifts: [
     {em:"🎧", name:"무선 이어폰",          list:129000},
     {em:"🔋", name:"보조배터리 10,000mAh", list:39000},
@@ -385,19 +388,19 @@ var CONFIG = {
   var C = CONFIG;
   var byId = function(list,id){return list.filter(function(x){return x.id===id})[0]};
   var state = {brand:'galaxy', plan:C.defaultPlan, model:''};
-  var methodName = function(k){return k==='public' ? '공시지원' : '선택약정'};
+  var methodName = function(k){return k==='public' ? '공통지원금' : '선택약정'};
 
   /* ---------- 가격 계산 ---------- */
   function calc(m, plan){
     var r10 = function(n){return Math.round(n/10)*10};
-    var extra = Math.round(m.subsidy*C.extraRate/10)*10;
+    var extra = m.extra;   /* 추가지원금: 공통지원금 선택·선택약정 모두 적용 (SKT 공식 안내 기준) */
     var st = C.hideSecret ? 0 : m.store;   /* 숨김 시 비밀지원금은 상담 후 별도 적용 */
     var pbuy = m.list - m.subsidy - extra - st, pdev = r10(pbuy/C.months);
     var pub = {method:'public', sub:m.subsidy, extra:extra, store:st, buy:pbuy, dev:pdev, fee:plan.fee,
                monthly:pdev+plan.fee, total:(pdev+plan.fee)*C.months, benefit:m.subsidy+extra+st};
-    var sbuy = m.list - st, sdev = r10(sbuy/C.months), sfee = r10(plan.fee*(1-C.selectRate));
-    var sel = {method:'select', sub:0, extra:0, store:st, buy:sbuy, dev:sdev, fee:sfee,
-               monthly:sdev+sfee, total:(sdev+sfee)*C.months, benefit:st+(plan.fee-sfee)*C.months};
+    var sbuy = m.list - extra - st, sdev = r10(sbuy/C.months), sfee = r10(plan.fee*(1-C.selectRate));
+    var sel = {method:'select', sub:0, extra:extra, store:st, buy:sbuy, dev:sdev, fee:sfee,
+               monthly:sdev+sfee, total:(sdev+sfee)*C.months, benefit:extra+st+(plan.fee-sfee)*C.months};
     return {pub:pub, sel:sel, best: pub.total <= sel.total ? pub : sel};
   }
   var maxGift = Math.max.apply(null, C.gifts.map(function(g){return g.list}));
@@ -409,9 +412,9 @@ var CONFIG = {
 
   /* ---------- 히어로 숫자 ---------- */
   var top = C.models.slice().sort(function(a,b){
-    return (b.subsidy*(1+C.extraRate)+(C.hideSecret?0:b.store)) - (a.subsidy*(1+C.extraRate)+(C.hideSecret?0:a.store));
+    return (b.subsidy+b.extra+(C.hideSecret?0:b.store)) - (a.subsidy+a.extra+(C.hideSecret?0:a.store));
   })[0];
-  var topSupport = top.subsidy + Math.round(top.subsidy*C.extraRate/10)*10 + (C.hideSecret ? 0 : top.store);
+  var topSupport = top.subsidy + top.extra + (C.hideSecret ? 0 : top.store);
   if (C.hideSecret) $('#maxPlus').hidden = false;
   var maxTotal = topSupport + maxGift;
   $('#basis').textContent = '기기 지원금 + 사은품 + 비밀지원금';
@@ -429,12 +432,12 @@ var CONFIG = {
   /* ---------- 혜택 카드 (CONFIG 데이터로 자동 계산) ---------- */
   (function(){
     var range = function(arr){ return {min:man(Math.min.apply(null,arr)), max:man(Math.max.apply(null,arr))}; };
-    var support = range(C.models.map(function(m){ return m.subsidy + Math.round(m.subsidy*C.extraRate/10)*10; }));
+    var support = range(C.models.map(function(m){ return m.subsidy + m.extra; }));
     var secret  = range(C.models.map(function(m){ return m.store; }));
     var gift    = range(C.gifts.map(function(g){ return g.list; }));
     var rng = function(r){ return '최소 <b>' + r.min + '</b> ~ 최대 <b>' + r.max + '</b> <i>만원</i>'; };
     var items = [
-      {ico:'📱', title:'공시지원금 + 추가지원금', tip:'통신사 지원금 그대로 적용', amt:rng(support)},
+      {ico:'📱', title:'공통지원금 + 추가지원금', tip:'통신 3사 공식 지원금 그대로 적용', amt:rng(support)},
       {ico:'🤫', title:'비밀지원금', tip:'상담 신청하신 분께만 안내', amt: C.hideSecret ? '<b class="txt">상담 후 자세히 안내 @</b>' : rng(secret)},
       {ico:'🎁', title:'사은품 1종 무료', tip:'정가 그대로, 직접 골라 받아가세요', amt:rng(gift)},
       {ico:'💳', title:'제휴카드 할인', tip:'전월 실적 충족 시 매월 적용',
@@ -498,8 +501,12 @@ var CONFIG = {
   function renderPrices(){
     pills($('#brandPills'), [{v:'galaxy',html:'갤럭시'},{v:'iphone',html:'아이폰'}],
       function(it){return it.v===state.brand}, function(v){ state.brand = v; renderPrices(); });
-    pills($('#planPills'), C.plans.map(function(p){return {v:p.id, html:p.name + '<small>월 ' + won(p.fee) + '원</small>'}}),
-      function(it){return it.v===state.plan}, function(v){ state.plan = v; renderPrices(); syncSummary(); });
+    if (C.plans.length > 1) {
+      pills($('#planPills'), C.plans.map(function(p){return {v:p.id, html:p.name + '<small>월 ' + won(p.fee) + '원</small>'}}),
+        function(it){return it.v===state.plan}, function(v){ state.plan = v; renderPrices(); syncSummary(); });
+    } else {
+      $('#planPills').innerHTML = '<span class="oneplan">기준 요금제 · ' + C.plans[0].name + ' (월 ' + won(C.plans[0].fee) + '원)</span>';
+    }
     var plan = byId(C.plans, state.plan);
     $('#priceGrid').innerHTML = C.models.filter(function(m){return m.brand===state.brand}).map(function(m){
       var r = calc(m, plan), a = r.pub, b = r.sel, bp = r.best === a;
@@ -512,8 +519,8 @@ var CONFIG = {
         '<p class="how">' + methodName(r.best.method) + ' 기준 · ' + C.months + '개월</p>' +
         '<span class="ben">총 혜택 ' + won(r.best.benefit) + '원' + (C.hideSecret ? ' <em>+@</em>' : '') + '</span>' +
         '<button class="btn" data-pick="' + m.id + '">이 모델로 견적 받기</button>' +
-        '<details class="more"><summary>상세 내역 보기</summary><table class="rc"><thead><tr><th></th><td>공시지원</td><td>선택약정</td></tr></thead><tbody>' +
-          row('공시지원금', minus(a.sub), '-') + row('추가지원금', minus(a.extra), '-') + (C.hideSecret ? '<tr class="secret"><th>비밀지원금</th><td colspan="2">상담 후 자세히 안내 @</td></tr>' : row('비밀지원금', minus(a.store), minus(b.store))) +
+        '<details class="more"><summary>상세 내역 보기</summary><table class="rc"><thead><tr><th></th><td>공통지원금</td><td>선택약정</td></tr></thead><tbody>' +
+          row('공통지원금', minus(a.sub), '-') + row('추가지원금', minus(a.extra), minus(b.extra)) + (C.hideSecret ? '<tr class="secret"><th>비밀지원금</th><td colspan="2">상담 후 자세히 안내 @</td></tr>' : row('비밀지원금', minus(a.store), minus(b.store))) +
           row('실구매가', won(a.buy), won(b.buy)) + row('월 기기값', won(a.dev), won(b.dev)) + row('월 통신요금', won(a.fee), won(b.fee)) +
           '<tr class="tot"><th>월 납부액</th><td>' + won(a.monthly) + (bp ? ' ★' : '') + '</td><td>' + won(b.monthly) + (bp ? '' : ' ★') + '</td></tr>' +
         '</tbody></table></details></article>';
@@ -525,7 +532,7 @@ var CONFIG = {
         setTimeout(function(){ $('#h-name').focus({preventScroll:true}); }, 600);
       });
     });
-    $('#priceNote').textContent = '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 금액은 예시입니다.' + (C.hideSecret ? ' 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '');
+    $('#priceNote').textContent = '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 통신 3사 공식 지원금 최대 금액(' + C.dataDate + ' 확인)' + (C.hideSecret ? ' 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '');
   }
 
   /* ---------- 사은품 ---------- */
