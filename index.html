@@ -159,6 +159,8 @@ section{scroll-margin-top:72px}
 .pcard .price b{display:block;font-size:34px;font-weight:900;color:var(--ink);letter-spacing:-.04em;line-height:1.2;font-variant-numeric:tabular-nums}
 .pcard .price b small{font-size:.36em;font-weight:700;margin-left:2px}
 .pcard .how{font-size:12.5px;color:var(--muted);margin-top:2px}
+.pcard .ben em{font-style:normal;font-weight:900;color:var(--violet);margin-left:2px}
+.rc .secret td{text-align:center;font-weight:800;color:var(--violet);background:rgba(var(--accent-rgb),.07);border-radius:8px}
 .pcard .ben{display:inline-block;margin-top:12px;font-size:14px;font-weight:800;color:var(--red);background:rgba(242,56,74,.08);border-radius:99px;padding:6px 14px}
 .pcard .btn{height:48px;font-size:15px;background:var(--ink);color:#fff;margin-top:16px}
 .pcard .btn:hover{background:var(--violet)}
@@ -337,6 +339,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
 var CONFIG = {
   brand: "브랜드명", phone: "1544-5643", kakaoUrl: "",
   formEndpoint: "",             // 신청 데이터 수신 URL (비우면 데모 모드: 전송되지 않음)
+  hideSecret: true,             // true: 비밀지원금 금액을 숨기고 "상담 후 안내"로 표시 (가격·혜택 합계에서도 제외)
   months: 24,                   // 할부 개월 수
   extraRate: 0.15,              // 추가지원금 비율(공시지원금 대비)
   selectRate: 0.25,             // 선택약정 요금 할인율
@@ -385,12 +388,13 @@ var CONFIG = {
   function calc(m, plan){
     var r10 = function(n){return Math.round(n/10)*10};
     var extra = Math.round(m.subsidy*C.extraRate/10)*10;
-    var pbuy = m.list - m.subsidy - extra - m.store, pdev = r10(pbuy/C.months);
-    var pub = {method:'public', sub:m.subsidy, extra:extra, store:m.store, buy:pbuy, dev:pdev, fee:plan.fee,
-               monthly:pdev+plan.fee, total:(pdev+plan.fee)*C.months, benefit:m.subsidy+extra+m.store};
-    var sbuy = m.list - m.store, sdev = r10(sbuy/C.months), sfee = r10(plan.fee*(1-C.selectRate));
-    var sel = {method:'select', sub:0, extra:0, store:m.store, buy:sbuy, dev:sdev, fee:sfee,
-               monthly:sdev+sfee, total:(sdev+sfee)*C.months, benefit:m.store+(plan.fee-sfee)*C.months};
+    var st = C.hideSecret ? 0 : m.store;   /* 숨김 시 비밀지원금은 상담 후 별도 적용 */
+    var pbuy = m.list - m.subsidy - extra - st, pdev = r10(pbuy/C.months);
+    var pub = {method:'public', sub:m.subsidy, extra:extra, store:st, buy:pbuy, dev:pdev, fee:plan.fee,
+               monthly:pdev+plan.fee, total:(pdev+plan.fee)*C.months, benefit:m.subsidy+extra+st};
+    var sbuy = m.list - st, sdev = r10(sbuy/C.months), sfee = r10(plan.fee*(1-C.selectRate));
+    var sel = {method:'select', sub:0, extra:0, store:st, buy:sbuy, dev:sdev, fee:sfee,
+               monthly:sdev+sfee, total:(sdev+sfee)*C.months, benefit:st+(plan.fee-sfee)*C.months};
     return {pub:pub, sel:sel, best: pub.total <= sel.total ? pub : sel};
   }
   var maxGift = Math.max.apply(null, C.gifts.map(function(g){return g.list}));
@@ -502,10 +506,10 @@ var CONFIG = {
         '<p class="list">출고가 <s>' + won(m.list) + '원</s></p>' +
         '<p class="price">월 납부액<b>' + won(r.best.monthly) + '<small>원 부터~</small></b></p>' +
         '<p class="how">' + methodName(r.best.method) + ' 기준 · ' + C.months + '개월</p>' +
-        '<span class="ben">총 혜택 ' + won(r.best.benefit) + '원</span>' +
+        '<span class="ben">총 혜택 ' + won(r.best.benefit) + '원' + (C.hideSecret ? ' <em>+@</em>' : '') + '</span>' +
         '<button class="btn" data-pick="' + m.id + '">이 모델로 견적 받기</button>' +
         '<details class="more"><summary>상세 내역 보기</summary><table class="rc"><thead><tr><th></th><td>공시지원</td><td>선택약정</td></tr></thead><tbody>' +
-          row('공시지원금', minus(a.sub), '-') + row('추가지원금', minus(a.extra), '-') + row('비밀지원금', minus(a.store), minus(b.store)) +
+          row('공시지원금', minus(a.sub), '-') + row('추가지원금', minus(a.extra), '-') + (C.hideSecret ? '<tr class="secret"><th>비밀지원금</th><td colspan="2">상담 후 자세히 안내 @</td></tr>' : row('비밀지원금', minus(a.store), minus(b.store))) +
           row('실구매가', won(a.buy), won(b.buy)) + row('월 기기값', won(a.dev), won(b.dev)) + row('월 통신요금', won(a.fee), won(b.fee)) +
           '<tr class="tot"><th>월 납부액</th><td>' + won(a.monthly) + (bp ? ' ★' : '') + '</td><td>' + won(b.monthly) + (bp ? '' : ' ★') + '</td></tr>' +
         '</tbody></table></details></article>';
@@ -517,7 +521,7 @@ var CONFIG = {
         setTimeout(function(){ $('#h-name').focus({preventScroll:true}); }, 600);
       });
     });
-    $('#priceNote').textContent = '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 금액은 예시입니다.';
+    $('#priceNote').textContent = '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 금액은 예시입니다.' + (C.hideSecret ? ' 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '');
   }
 
   /* ---------- 사은품 ---------- */
