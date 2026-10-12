@@ -158,6 +158,8 @@ section{scroll-margin-top:72px}
 .pcard{background:#fff;border-radius:22px;box-shadow:0 16px 36px -24px rgba(30,20,90,.4);padding:24px 18px 18px}
 .pcard h3{font-size:19px;letter-spacing:-.02em}
 .pcard .list{margin-top:4px;font-size:13px;color:var(--muted)}
+.pcard .shot{height:170px;display:grid;place-items:center;margin:-6px 0 4px}
+.pcard .shot img{width:100%;max-width:190px;height:170px;object-fit:contain;mix-blend-mode:multiply}
 .pcard .sup{color:var(--violet);font-weight:800;margin-left:6px}
 .pcard .cut{margin-top:12px;display:flex;flex-direction:column;align-items:center;line-height:1.15}
 .pcard .cut em{font-style:normal;font-weight:900;font-size:19px;color:var(--red);letter-spacing:-.02em}
@@ -361,15 +363,15 @@ var CONFIG = {
   plans: [
     {id:"p109", name:"통신요금(요금제별 상이)", fee:109000}   // 월 통신요금 가정값 - 실제 기준 요금제로 교체
   ],
-  /* support: 번호이동 지원금 합계(원) / final: 최종 기기값(원) / list: 출고가 / store: 비밀지원금(숨김 해제 시에만 사용) */
+  /* support: 번호이동 지원금 합계(원) / final: 최종 기기값(원) / list: 출고가 / img: 기기 이미지 경로 / store: 비밀지원금(숨김 해제 시에만 사용) */
   models: [
-    {id:"s26",    brand:"galaxy", name:"갤럭시 S26",         spec:"256GB", list:1254000, support:900000, final:353000,  carrier:"SKT",   join:"번호이동"},
-    {id:"zf8",    brand:"galaxy", name:"갤럭시 Z 플립8",      spec:"256GB", list:1683000, support:900000, final:782000,  carrier:"KT",    join:"번호이동"},
-    {id:"zfold8", brand:"galaxy", name:"갤럭시 Z 폴드8",      spec:"256GB", list:2278100, support:900000, final:1377100, carrier:"SKT",   join:"번호이동"},
-    {id:"i18p",   brand:"iphone", name:"아이폰 18 프로",      spec:"256GB", list:1991000, support:630000, final:1361000, carrier:"LG U+", join:"번호이동"},
-    {id:"i18pm",  brand:"iphone", name:"아이폰 18 프로 맥스",  spec:"256GB", list:2200000, support:480000, final:1719000, carrier:"SKT",   join:"번호이동"},
-    {id:"i17",    brand:"iphone", name:"아이폰 17",          spec:"128GB", list:1287000, support:950000, final:336000,  carrier:"KT",    join:"번호이동"},
-    {id:"i17p",   brand:"iphone", name:"아이폰 17 프로",      spec:"256GB", list:1782000, support:950000, final:831000,  carrier:"SKT",   join:"번호이동"}
+    {id:"s26",    brand:"galaxy", name:"갤럭시 S26",         spec:"256GB", img:"images/S942_B.jpg", list:1254000, support:900000, final:353000,  carrier:"SKT",   join:"번호이동"},
+    {id:"zf8",    brand:"galaxy", name:"갤럭시 Z 플립8",      spec:"256GB", img:"images/F776N_G.jpg", list:1683000, support:900000, final:782000,  carrier:"KT",    join:"번호이동"},
+    {id:"zfold8", brand:"galaxy", name:"갤럭시 Z 폴드8",      spec:"256GB", img:"images/F791N_G.jpg", list:2278100, support:900000, final:1377100, carrier:"SKT",   join:"번호이동"},
+    {id:"i18p",   brand:"iphone", name:"아이폰 18 프로",      spec:"256GB", img:"images/18P_BG.jpg", list:1991000, support:630000, final:1361000, carrier:"LG U+", join:"번호이동"},
+    {id:"i18pm",  brand:"iphone", name:"아이폰 18 프로 맥스",  spec:"256GB", img:"images/18P_BG.jpg", list:2200000, support:480000, final:1719000, carrier:"SKT",   join:"번호이동"},
+    {id:"i17",    brand:"iphone", name:"아이폰 17",          spec:"128GB", img:"images/17_B.jpg", list:1287000, support:950000, final:336000,  carrier:"KT",    join:"번호이동"},
+    {id:"i17p",   brand:"iphone", name:"아이폰 17 프로",      spec:"256GB", img:"images/17P_S.jpg", list:1782000, support:950000, final:831000,  carrier:"SKT",   join:"번호이동"}
   ],
   /* 사은품(택1) · list: 정가(원) - 예시값 */
   gifts: [
@@ -537,6 +539,7 @@ var CONFIG = {
       if (r.port) {
         var o = r.best, pct = Math.round((m.list - o.buy) / m.list * 100);
         return '<article class="pcard">' +
+          (m.img ? '<div class="shot"><img src="' + m.img + '" alt="' + m.name + ' 제품 이미지" width="190" height="190"</div>' : '') +
           '<h3>' + m.name + '</h3>' +
           '<p class="list"><span class="carrier">' + m.carrier + ' · ' + m.join + ' · ' + m.spec + '</span></p>' +
           '<p class="list">출고가 <s>' + won(m.list) + '원</s> <span class="sup">지원금 ' + man(o.sub) + '만원</span></p>' +
