@@ -433,16 +433,18 @@ var CONFIG = {
   plans: [
     {id:"p109", name:"통신요금(요금제별 상이)", fee:109000}   // 월 통신요금 가정값 - 실제 기준 요금제로 교체
   ],
-  /* support: 번호이동 지원금 합계(원) / final: 최종 기기값(원) / list: 출고가 / img: 기기 이미지 경로 / store: 비밀지원금(숨김 해제 시에만 사용) */
+  /* official: 통신 3사(SKT·KT·LG U+) 공식 공통지원금 중 최대(번호이동·최상위 요금제 기준, 2026-10-12 확인) — 혜택 카드 01에 사용
+     SKT 베스트109 / KT 초이스130 / LG U+ 플러스플랜130 기준, 추가지원금(15%)은 별도
+     support: 번호이동 지원금 합계(원) / final: 최종 기기값(원) / list: 출고가 / img: 기기 이미지 경로 / store: 비밀지원금(숨김 해제 시에만 사용) */
   models: [
-    {id:"zfold8", brand:"galaxy", name:"갤럭시 Z 폴드8 와이드", spec:"256GB", img:"images/F791N_G.jpg", list:2278100, support:900000, final:1377100, carrier:"SKT",   join:"번호이동"},
-    {id:"zf8",    brand:"galaxy", name:"갤럭시 Z 플립8",      spec:"256GB", img:"images/F776N_G.jpg", list:1683000, support:900000, final:782000,  carrier:"KT",    join:"번호이동"},
-    {id:"s26",    brand:"galaxy", name:"갤럭시 S26",         spec:"256GB", img:"images/S942_B.jpg", list:1254000, support:900000, final:353000,  carrier:"SKT",   join:"번호이동"},
-    {id:"s26u",   brand:"galaxy", name:"갤럭시 S26 울트라", spec:"256GB", img:"images/S948_B.jpg", list:1797400, support:900000, final:896400,  carrier:"LG U+", join:"번호이동"},
-    {id:"i18p",   brand:"iphone", name:"아이폰 18 프로",      spec:"256GB", img:"images/18P_BG.jpg", list:1991000, support:630000, final:1361000, carrier:"LG U+", join:"번호이동"},
-    {id:"i18pm",  brand:"iphone", name:"아이폰 18 프로 맥스",  spec:"256GB", img:"images/18P_BG.jpg", list:2200000, support:480000, final:1719000, carrier:"SKT",   join:"번호이동"},
-    {id:"i17",    brand:"iphone", name:"아이폰 17",          spec:"128GB", img:"images/17_B.jpg", list:1287000, support:950000, final:336000,  carrier:"KT",    join:"번호이동"},
-    {id:"i17p",   brand:"iphone", name:"아이폰 17 프로",      spec:"256GB", img:"images/17P_S.jpg", list:1782000, support:950000, final:831000,  carrier:"SKT",   join:"번호이동"}
+    {id:"zfold8", brand:"galaxy", name:"갤럭시 Z 폴드8 와이드", spec:"256GB", img:"images/F791N_G.jpg", list:2278100, official:500000, support:900000, final:1377100, carrier:"SKT",   join:"번호이동"},
+    {id:"zf8",    brand:"galaxy", name:"갤럭시 Z 플립8",      spec:"256GB", img:"images/F776N_G.jpg", list:1683000, official:500000, support:900000, final:782000,  carrier:"KT",    join:"번호이동"},
+    {id:"s26",    brand:"galaxy", name:"갤럭시 S26",         spec:"256GB", img:"images/S942_B.jpg", list:1254000, official:500000, support:900000, final:353000,  carrier:"SKT",   join:"번호이동"},
+    {id:"s26u",   brand:"galaxy", name:"갤럭시 S26 울트라", spec:"256GB", img:"images/S948_B.jpg", list:1797400, official:500000, support:900000, final:896400,  carrier:"LG U+", join:"번호이동"},
+    {id:"i18p",   brand:"iphone", name:"아이폰 18 프로",      spec:"256GB", img:"images/18P_BG.jpg", list:1991000, official:450000, support:630000, final:1361000, carrier:"LG U+", join:"번호이동"},
+    {id:"i18pm",  brand:"iphone", name:"아이폰 18 프로 맥스",  spec:"256GB", img:"images/18P_BG.jpg", list:2200000, official:250000, support:480000, final:1719000, carrier:"SKT",   join:"번호이동"},
+    {id:"i17",    brand:"iphone", name:"아이폰 17",          spec:"128GB", img:"images/17_B.jpg", list:1287000, official:550000, support:950000, final:336000,  carrier:"KT",    join:"번호이동"},
+    {id:"i17p",   brand:"iphone", name:"아이폰 17 프로",      spec:"256GB", img:"images/17P_S.jpg", list:1782000, official:550000, support:950000, final:831000,  carrier:"SKT",   join:"번호이동"}
   ],
   /* 사은품(택1) · list: 정가(원) - 예시값 */
   gifts: [
@@ -522,10 +524,12 @@ var CONFIG = {
     var range = function(arr){ return {min:man(Math.min.apply(null,arr)), max:man(Math.max.apply(null,arr))}; };
     var support = range(C.models.map(function(m){ return supportOf(m); }));
     var secret  = range(C.models.map(function(m){ return m.store; }));
+    var official = C.models.every(function(m){ return m.official != null; }) ? range(C.models.map(function(m){ return m.official; })) : null;
     var gift    = C.giftRange || range(C.gifts.map(function(g){ return g.list; }));   /* giftRange: 고정 표시(만원) */
     var rng = function(r){ return '최소 <b>' + r.min + '</b> ~ 최대 <b>' + r.max + '</b> <i>만원</i>'; };
     var items = [
-      {ico:'📱', title: C.models[0].support != null ? '번호이동 지원금' : '공통지원금 + 추가지원금', tip: C.models[0].support != null ? '통신사 지원금 합계 · 번호이동 기준' : '통신 3사 공식 지원금 그대로 적용', amt:rng(support)},
+      {ico:'📱', title:'통신사 공통지원금', tip:'SKT·KT·LG U+ 3사 최대 · 번호이동 기준',
+       amt: official ? ('최소 <b>' + official.min + '</b> ~ 최대 <b>' + official.max + '</b> <i>만원</i><small>+ 추가지원금(15%) 별도 · ' + C.dataDate + ' 확인</small>') : rng(support)},
       {ico:'🤫', title:'비밀지원금', tip:'상담 신청하신 분께만 안내', amt: C.hideSecret ? '<b class="txt">@+ 상담 후 자세히 안내</b>' : rng(secret)},
       {ico:'🎁', title:'사은품 1종 무료', tip:'정가 그대로, 직접 골라 받아가세요', amt: (typeof C.giftAmount === 'number') ? '<b>' + C.giftAmount + '</b> <i>만원 상당 사은품 증정</i>' : rng(gift)},
       {ico:'💳', title:'제휴카드 할인', tip:'전월 실적 충족 시 매월 적용',
