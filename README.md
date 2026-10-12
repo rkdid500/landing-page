@@ -33,6 +33,7 @@ node serve.js   # http://localhost:5173
 | `models` | 모델별 `list`(출고가) / `subsidy`(공통지원금) / `extra`(추가지원금) / `store`(비밀지원금) |
 | `plans` | 요금제명 / 월 요금 (요금제가 1개면 선택 버튼 대신 기준 요금제로 표시) |
 | `gifts` | 사은품명 / 정가 |
+| `heroMax` | 첫 화면 "최대 ○○만원" 고정 숫자(만원). `null`이면 모델 데이터로 자동 계산 |
 | `months`, `selectRate`, `cardMonthly`, `dataDate` | 할부 개월, 선택약정 할인율, 제휴카드 월 할인, 지원금 확인 기준일 |
 | `company`, `ceo`, `bizno`, `mailorder`, `address`, `email`, `privacyOfficer` | 푸터 사업자 정보 |
 | `formEndpoint` | 신청 데이터를 받을 URL (JSON POST). 비우면 데모 모드로, 어디로도 전송되지 않습니다. |
