@@ -72,6 +72,8 @@ section{scroll-margin-top:72px}
 .kicker{display:inline-block;font-size:clamp(15px,2.2vw,18px);font-weight:800;color:var(--kick-fg);background:var(--kick-bg);border-radius:99px;padding:8px 18px;box-shadow:0 10px 24px -12px rgba(0,0,0,.4)}
 .bignum{display:flex;justify-content:center;align-items:baseline;gap:6px;line-height:1;margin-top:14px}
 .bignum .n{font-size:clamp(110px,26vw,190px);font-weight:900;letter-spacing:-.06em;color:var(--num);font-variant-numeric:tabular-nums;text-shadow:var(--num-shadow)}
+.bignum .plus{font-size:clamp(22px,4.4vw,38px);font-weight:900;color:var(--num);margin-left:2px;text-shadow:0 3px 0 rgba(0,0,0,.12);align-self:flex-start;margin-top:.35em}
+.bignum .plus[hidden]{display:none}
 .bignum .u{font-size:clamp(32px,6vw,52px);font-weight:900;color:var(--unit);text-shadow:0 3px 0 rgba(0,0,0,.12)}
 .basis{margin-top:10px;font-size:14px;color:var(--basis);font-weight:600}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px auto 28px;max-width:560px}
@@ -139,6 +141,7 @@ section{scroll-margin-top:72px}
 .bcard h3{font-size:19px;margin-top:12px;letter-spacing:-.02em;line-height:1.35}
 .bcard .tip{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;background:var(--lime);color:#1a0b4d;border-radius:99px;padding:5px 14px}
 .bcard .amt{margin-top:16px;padding-top:14px;border-top:1px dashed #d9dbea;font-size:15px;font-weight:700;color:var(--muted)}
+.bcard .amt b.txt{font-size:20px;color:var(--red);letter-spacing:-.02em;line-height:1.6}
 .bcard .amt b{font-size:36px;font-weight:900;color:var(--violet);letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin:0 2px;line-height:1.2}
 .bcard .amt i{font-style:normal;font-size:16px;font-weight:800;color:var(--ink)}
 .bcard .amt small{display:block;margin-top:2px;font-size:12.5px;font-weight:600}
@@ -238,7 +241,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
   </div>
   <div class="narrow">
     <p class="kicker">지금 바꾸면 받는 혜택, 최대</p>
-    <div class="bignum"><span class="n" id="maxNum">0</span><span class="u">만원</span></div>
+    <div class="bignum"><span class="n" id="maxNum">0</span><span class="u">만원</span><span class="plus" id="maxPlus" hidden>+@</span></div>
     <p class="basis" id="basis"></p>
 
     <div class="facts" id="facts"></div>
@@ -406,9 +409,10 @@ var CONFIG = {
 
   /* ---------- 히어로 숫자 ---------- */
   var top = C.models.slice().sort(function(a,b){
-    return (b.subsidy*(1+C.extraRate)+b.store) - (a.subsidy*(1+C.extraRate)+a.store);
+    return (b.subsidy*(1+C.extraRate)+(C.hideSecret?0:b.store)) - (a.subsidy*(1+C.extraRate)+(C.hideSecret?0:a.store));
   })[0];
-  var topSupport = top.subsidy + Math.round(top.subsidy*C.extraRate/10)*10 + top.store;
+  var topSupport = top.subsidy + Math.round(top.subsidy*C.extraRate/10)*10 + (C.hideSecret ? 0 : top.store);
+  if (C.hideSecret) $('#maxPlus').hidden = false;
   var maxTotal = topSupport + maxGift;
   $('#basis').textContent = '기기 지원금 + 사은품 + 비밀지원금';
 
@@ -431,7 +435,7 @@ var CONFIG = {
     var rng = function(r){ return '최소 <b>' + r.min + '</b> ~ 최대 <b>' + r.max + '</b> <i>만원</i>'; };
     var items = [
       {ico:'📱', title:'공시지원금 + 추가지원금', tip:'통신사 지원금 그대로 적용', amt:rng(support)},
-      {ico:'🤫', title:'비밀지원금', tip:'상담 신청하신 분께만 안내', amt:rng(secret)},
+      {ico:'🤫', title:'비밀지원금', tip:'상담 신청하신 분께만 안내', amt: C.hideSecret ? '<b class="txt">상담 후 자세히 안내 @</b>' : rng(secret)},
       {ico:'🎁', title:'사은품 1종 무료', tip:'정가 그대로, 직접 골라 받아가세요', amt:rng(gift)},
       {ico:'💳', title:'제휴카드 할인', tip:'전월 실적 충족 시 매월 적용',
        amt:'월 최대 <b>' + man(C.cardMonthly) + '</b> <i>만원</i><small>' + C.months + '개월 최대 ' + man(C.cardMonthly*C.months) + '만원</small>'}
