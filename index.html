@@ -267,6 +267,23 @@ a,button,summary,select,input{touch-action:manipulation}
   .facts b{font-size:14.5px;white-space:nowrap}
   .facts small{font-size:12px}
 }
+
+/* ===== 푸터 (싹딜 사이트 하단 구성) ===== */
+footer{background:#fff;border-top:1px solid var(--line);text-align:left;padding:40px 0 110px;color:#7b7d95}
+.ft{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.ft-logo{display:block;height:30px;width:auto}
+.ft-tag{margin-top:16px;font-size:15px;font-weight:700;line-height:1.5;color:var(--ink)}
+.ft-bottom{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px}
+.ft-bottom small{font-size:13.5px;color:#868aa3}
+.ft-bottom nav{display:flex;flex-wrap:wrap;gap:0 18px}
+.ft-bottom nav a{display:inline-flex;align-items:center;gap:.35em;min-height:44px;font-size:13.5px;color:#868aa3}
+.ft-bottom nav a:hover{color:var(--violet);text-decoration:underline}
+.ft-cert{display:block;flex:none}
+.ft-cert img{display:block;width:140px;height:auto}
+.ft-company{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.7;color:#868aa3}
+.ft-company p+p{margin-top:2px}
+@media(min-width:760px){footer{padding-bottom:44px}}
+@media(max-width:560px){.ft-cert img{width:120px}}
 </style>
 </head>
 <body>
@@ -366,11 +383,28 @@ a,button,summary,select,input{touch-action:manipulation}
 </main>
 
 <footer>
-  <div class="wrap">
-    <p>상호: <span data-bind="company">[상호명]</span> | 대표자: <span data-bind="ceo">[대표자명]</span> | 사업자등록번호: <span data-bind="bizno">[000-00-00000]</span></p>
-    <p>통신판매업 신고번호: <span data-bind="mailorder">[제0000-지역-0000호]</span> | 주소: <span data-bind="address">[사업장 주소]</span></p>
-    <p>고객센터: <span data-bind="phone">1544-5643</span> | 이메일: <span data-bind="email">[email@example.com]</span> | 개인정보책임자: <span data-bind="privacyOfficer">[성명]</span></p>
-    <p class="legal">표시된 지원금은 번호이동 가입 기준의 당사 안내 금액이며, 통신사·요금제·가입 유형·공시일에 따라 수시로 변경될 수 있습니다. 실구매가는 출고가에서 지원금을 뺀 금액이며 할부수수료·부가세·월 통신요금·부가서비스 요금은 별도입니다. 사은품 및 제휴카드 혜택은 판매점 조건에 따르며 변경될 수 있습니다. 삼성, 갤럭시, Apple, 아이폰 등 상표는 각 권리자에게 있습니다.</p>
+  <div class="wrap ft">
+    <div class="ft-left">
+      <img class="ft-logo" src="images/sakd-logo-sm.png" alt="싹딜" width="72" height="30">
+      <p class="ft-tag">필요한 모든 것을,<br>가장 합리적인 선택으로</p>
+      <div class="ft-bottom">
+        <small>© 2026 싹딜. All rights reserved.</small>
+        <nav aria-label="약관 및 고객센터">
+          <a href="https://sakd.co.kr/terms" target="_blank" rel="noopener">이용약관</a>
+          <a href="https://sakd.co.kr/privacy-policy" target="_blank" rel="noopener">개인정보처리방침</a>
+          <a href="https://sakd.co.kr/marketing-consent" target="_blank" rel="noopener">마케팅 정보 수신 동의</a>
+          <a data-tel href="tel:15445643">고객센터 <span data-bind="phone">1544-5643</span></a>
+        </nav>
+      </div>
+    </div>
+    <a class="ft-cert" href="https://ictmarket.or.kr:8443/precon/pop_CertIcon.do?PRECON_REQ_ID=PRE0000203285&amp;YN=1" target="_blank" rel="noopener noreferrer" aria-label="사전승낙서 확인 (새 창)">
+      <img src="images/sakd-preconsent.png" alt="제이에이치 온라인판매점 사전승낙서 확인" width="177" height="139" loading="lazy">
+    </a>
+  </div>
+  <div class="wrap ft-company">
+    <p>상호: <span data-bind="company">제이에이치</span> | 대표자: <span data-bind="ceo">양진혁</span> | 사업자등록번호: <span data-bind="bizno">349-03-03198</span></p>
+    <p>통신판매업 신고번호: <span data-bind="mailorder">제 2025-대전서구-0038 호</span> | 주소: <span data-bind="address">대전광역시 서구 둔산로 137번길 21, 3층 331호 (둔산동)</span></p>
+    <p>이메일: <span data-bind="email">yjh5535@nate.com</span> | 개인정보보호책임자: <span data-bind="privacyOfficer">양진혁</span></p>
   </div>
 </footer>
 
