@@ -392,6 +392,7 @@ a,button,summary,select,input{touch-action:manipulation}
 var CONFIG = {
   brand: "브랜드명", phone: "1544-5643", kakaoUrl: "",
   formEndpoint: "",             // 신청 데이터 수신 URL (비우면 데모 모드: 전송되지 않음)
+  giftRange: {min:5, max:10},   // 혜택 카드 03 "최소 ~ 최대" 고정 표시(만원). null이면 사은품 목록으로 자동 계산
   giftLabel: "5~10만원 상당",   // 첫 화면 사은품 표시 문구(고정). null이면 사은품 목록의 최고 정가로 자동 계산
   heroMax: 100,                 // 첫 화면 "최대 ○○만원" 고정 숫자(만원). null이면 모델 데이터로 자동 계산
   hideSecret: true,             // true: 비밀지원금 금액을 숨기고 "상담 후 안내"로 표시 (가격·혜택 합계에서도 제외)
@@ -491,7 +492,7 @@ var CONFIG = {
     var range = function(arr){ return {min:man(Math.min.apply(null,arr)), max:man(Math.max.apply(null,arr))}; };
     var support = range(C.models.map(function(m){ return supportOf(m); }));
     var secret  = range(C.models.map(function(m){ return m.store; }));
-    var gift    = range(C.gifts.map(function(g){ return g.list; }));
+    var gift    = C.giftRange || range(C.gifts.map(function(g){ return g.list; }));   /* giftRange: 고정 표시(만원) */
     var rng = function(r){ return '최소 <b>' + r.min + '</b> ~ 최대 <b>' + r.max + '</b> <i>만원</i>'; };
     var items = [
       {ico:'📱', title: C.models[0].support != null ? '번호이동 지원금' : '공통지원금 + 추가지원금', tip: C.models[0].support != null ? '통신사 지원금 합계 · 번호이동 기준' : '통신 3사 공식 지원금 그대로 적용', amt:rng(support)},
