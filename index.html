@@ -392,6 +392,7 @@ a,button,summary,select,input{touch-action:manipulation}
 var CONFIG = {
   brand: "브랜드명", phone: "1544-5643", kakaoUrl: "",
   formEndpoint: "",             // 신청 데이터 수신 URL (비우면 데모 모드: 전송되지 않음)
+  giftLabel: "5~10만원 상당",   // 첫 화면 사은품 표시 문구(고정). null이면 사은품 목록의 최고 정가로 자동 계산
   heroMax: 100,                 // 첫 화면 "최대 ○○만원" 고정 숫자(만원). null이면 모델 데이터로 자동 계산
   hideSecret: true,             // true: 비밀지원금 금액을 숨기고 "상담 후 안내"로 표시 (가격·혜택 합계에서도 제외)
   dataDate: "2026.10.12",       // (공식값 모드) 지원금 확인 기준일
@@ -482,7 +483,7 @@ var CONFIG = {
     (C.models[0].support != null
       ? '<div><small>기기값 최저</small><b>' + won(minBuy) + '원~</b></div>'
       : '<div><small>월 납부액</small><b>' + won(minMonthly.v) + '원~</b></div>') +
-    '<div><small>사은품</small><b>' + man(maxGift) + '만원 상당</b></div>' +
+    '<div><small>사은품</small><b>' + (C.giftLabel || (man(maxGift) + '만원 상당')) + '</b></div>' +
     '<div><small>제휴카드</small><b>월 ' + man(C.cardMonthly) + '만원</b></div>';
 
   /* ---------- 혜택 카드 (CONFIG 데이터로 자동 계산) ---------- */
