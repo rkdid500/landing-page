@@ -226,6 +226,43 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
   .form-card{padding:22px}
   .gift{width:calc(50% - 6px);min-width:0}
 }
+
+/* ===== 모바일 최적화 ===== */
+html{-webkit-tap-highlight-color:transparent}
+body{overflow-x:clip}
+a,button,summary,select,input{touch-action:manipulation}
+.top{padding-top:env(safe-area-inset-top)}
+.logo,.top-tel{min-height:44px;display:flex;align-items:center}
+.pills:empty{display:none}
+.pills button{min-height:44px}
+.more summary{display:inline-block;padding:12px 18px;line-height:20px}
+.dock .tel{min-height:44px;justify-content:center}
+.dock .tel small{font-size:12px}
+.rc thead th,.rc thead td{font-size:12px}
+.privacy,.note,footer .legal{font-size:12.5px}
+@media(max-width:480px){
+  .deco .c1{display:none}
+  .pcard{padding:18px 14px 14px}
+  .pcard .shot{height:140px;margin-top:-4px}
+  .pcard .shot img{height:140px}
+  .bcard{padding:46px 16px 20px}
+}
+@media(max-width:430px){
+  .bignum .n{font-size:min(24vw,104px)}
+  .facts b{font-size:clamp(14px,4.1vw,18px);white-space:nowrap}
+}
+@media(min-width:360px) and (max-width:430px){
+  .deco .d1{--w:72px;left:-30px}
+  .deco .d2{--w:78px;right:-34px}
+}
+@media(max-width:359px){
+  .deco .phone{display:none}
+  .bignum .n{font-size:96px}
+  .facts{gap:6px}
+  .facts div{padding:12px 2px}
+  .facts b{font-size:14.5px;white-space:nowrap}
+  .facts small{font-size:12px}
+}
 </style>
 </head>
 <body>
