@@ -51,8 +51,8 @@ button,input,select{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--blue-2);outline-offset:2px}
 .wrap{width:min(1040px,100% - 32px);margin-inline:auto}
 .narrow{width:min(560px,100% - 32px);margin-inline:auto}
-section{scroll-margin-top:72px}
-#apply{scroll-margin-top:80px}
+section{scroll-margin-top:16px}
+#apply{scroll-margin-top:16px}
 .sec{padding:72px 0}
 .h2{font-size:clamp(26px,4.2vw,36px);line-height:1.25;font-weight:850;letter-spacing:-.025em}
 .sub{color:var(--muted);margin-top:10px;font-size:16px}
@@ -235,7 +235,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
 html{-webkit-tap-highlight-color:transparent}
 body{overflow-x:clip}
 a,button,summary,select,input{touch-action:manipulation}
-.top{padding-top:env(safe-area-inset-top)}
+.hero{padding-top:calc(40px + env(safe-area-inset-top))}
 .logo,.top-tel{min-height:44px;display:flex;align-items:center}
 .pills:empty{display:none}
 .pills button{min-height:44px}
@@ -270,13 +270,6 @@ a,button,summary,select,input{touch-action:manipulation}
 </style>
 </head>
 <body>
-
-<header class="top">
-  <div class="wrap">
-    <a class="logo" href="#top"><i></i><span data-bind="brand">싹딜</span></a>
-    <a class="top-tel" data-tel href="tel:15445643" data-bind="phone">1544-5643</a>
-  </div>
-</header>
 
 <main id="top">
 
