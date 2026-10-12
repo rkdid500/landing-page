@@ -72,8 +72,6 @@ section{scroll-margin-top:16px}
 .kicker{display:inline-block;font-size:clamp(15px,2.2vw,18px);font-weight:800;color:var(--kick-fg);background:var(--kick-bg);border-radius:99px;padding:8px 18px;box-shadow:0 10px 24px -12px rgba(0,0,0,.4)}
 .bignum{display:flex;justify-content:center;align-items:baseline;gap:6px;line-height:1;margin-top:14px}
 .bignum .n{font-size:clamp(110px,26vw,190px);font-weight:900;letter-spacing:-.06em;color:var(--num);font-variant-numeric:tabular-nums;text-shadow:var(--num-shadow)}
-.bignum .plus{font-size:clamp(22px,4.4vw,38px);font-weight:900;color:var(--num);margin-left:2px;text-shadow:0 3px 0 rgba(0,0,0,.12);align-self:flex-start;margin-top:.35em}
-.bignum .plus[hidden]{display:none}
 .bignum .u{font-size:clamp(32px,6vw,52px);font-weight:900;color:var(--unit);text-shadow:0 3px 0 rgba(0,0,0,.12)}
 .basis{margin-top:10px;font-size:14px;color:var(--basis);font-weight:600}
 .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px auto 28px;max-width:560px}
@@ -300,7 +298,7 @@ footer{background:#fff;border-top:1px solid var(--line);text-align:left;padding:
   </div>
   <div class="narrow">
     <p class="kicker">지금 바꾸면 받는 혜택, 최대</p>
-    <div class="bignum"><span class="n" id="maxNum">0</span><span class="u">만원</span><span class="plus" id="maxPlus" hidden>+@</span></div>
+    <div class="bignum"><span class="n" id="maxNum">0</span><span class="u">만원</span></div>
     <p class="basis" id="basis"></p>
 
     <div class="facts" id="facts"></div>
@@ -503,7 +501,6 @@ var CONFIG = {
     return (supportOf(b)+(C.hideSecret?0:(b.store||0))) - (supportOf(a)+(C.hideSecret?0:(a.store||0)));
   })[0];
   var topSupport = supportOf(top) + (C.hideSecret ? 0 : (top.store||0));
-  if (C.hideSecret) $('#maxPlus').hidden = false;
   var maxTotal = topSupport + maxGift;
   $('#basis').textContent = '기기 지원금 + 사은품 + 비밀지원금';
 
