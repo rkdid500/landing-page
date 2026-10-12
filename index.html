@@ -546,7 +546,7 @@ var CONFIG = {
     var rng = function(r){ return '최소 <b>' + r.min + '</b> ~ 최대 <b>' + r.max + '</b> <i>만원</i>'; };
     var items = [
       {ico:'📱', title:'통신사 공통지원금', tip:'SKT·KT·LG U+ 3사 최대 · 번호이동 기준',
-       amt: official ? ('최소 <b>' + official.min + '</b> ~ 최대 <b>' + official.max + '</b> <i>만원</i><small>+ 추가지원금(15%) 별도 · ' + C.dataDate + ' 확인</small>') : rng(support)},
+       amt: official ? ('최소 <b>' + official.min + '</b> ~ 최대 <b>' + official.max + '</b> <i>만원</i>') : rng(support)},
       {ico:'🤫', title:'비밀지원금', tip:'상담 신청하신 분께만 안내', amt: C.hideSecret ? '<b class="txt">@+ 상담 후 자세히 안내</b>' : rng(secret)},
       {ico:'🎁', title:'사은품 1종 무료', tip:'정가 그대로, 직접 골라 받아가세요', amt: (typeof C.giftAmount === 'number') ? '<b>' + C.giftAmount + '</b> <i>만원 상당 사은품 증정</i>' : rng(gift)}
     ];
