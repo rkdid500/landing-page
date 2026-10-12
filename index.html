@@ -186,6 +186,8 @@ section{scroll-margin-top:72px}
 .rc .minus{color:var(--red)}
 .rc .tot th,.rc .tot td{border-top:2px solid var(--ink);color:var(--ink);font-weight:900}
 .note{margin-top:20px;font-size:12.5px;color:var(--muted)}
+#priceNote{line-height:1.7}
+#priceNote .n3{display:block;margin-top:14px;font-size:17px;font-weight:800;line-height:1.5;color:var(--red);letter-spacing:-.02em}
 
 /* 사은품 */
 .gifts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:28px}
@@ -611,9 +613,15 @@ var CONFIG = {
         setTimeout(function(){ $('#h-name').focus({preventScroll:true}); }, 600);
       });
     });
-    $('#priceNote').textContent = (C.models[0].support != null)
-      ? '* ' + '번호이동 가입 기준 · 출고가에서 지원금을 뺀 예상 실구매가(할부수수료·부가세 별도, 조건에 따라 상담 후 추가 지원)' + (C.hideSecret ? ' · 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '')
-      : '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 통신 3사 공식 지원금 최대 금액(' + C.dataDate + ' 확인)' + (C.hideSecret ? ' 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '');
+    var noteEl = $('#priceNote');
+    if (C.models[0].support != null) {
+      noteEl.innerHTML =
+        '<span class="n1">* 번호이동 가입 기준 · 출고가에서 지원금을 뺀 예상 실구매가</span><br>' +
+        '<span class="n2">(할부수수료·부가세 별도, 조건에 따라 상담 후 추가 지원)</span>' +
+        (C.hideSecret ? '<strong class="n3">비밀지원금은 상담 후 안내되며<br>위 금액에서 추가로 차감됩니다.</strong>' : '');
+    } else {
+      noteEl.textContent = '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 통신 3사 공식 지원금 최대 금액(' + C.dataDate + ' 확인)' + (C.hideSecret ? ' 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '');
+    }
   }
 
   /* ---------- 사은품 ---------- */
