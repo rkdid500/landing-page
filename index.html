@@ -242,7 +242,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
   </div>
   <div class="narrow">
     <p class="kicker">지금 바꾸면 받는 혜택, 최대</p>
-    <div class="bignum"><span class="n" id="maxNum">0</span><span class="u">만원</span><span class="plus" id="maxPlus" hidden>+@</span></div>
+    <div class="bignum"><span class="n" id="maxNum">76</span><span class="u">만원</span><span class="plus" id="maxPlus" hidden>+@</span></div>
     <p class="basis" id="basis"></p>
 
     <div class="facts" id="facts"></div>
@@ -451,17 +451,7 @@ var CONFIG = {
     }).join('');
   })();
 
-  (function countUp(el, to){
-    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = to; return; }
-    var t0 = null, dur = 1000;
-    setTimeout(function(){ el.textContent = to; }, dur + 250);
-    requestAnimationFrame(function step(t){
-      if (!t0) t0 = t;
-      var p = Math.min(1, (t - t0)/dur);
-      el.textContent = Math.round(to*(1 - Math.pow(1-p, 3)));
-      if (p < 1) requestAnimationFrame(step);
-    });
-  })($('#maxNum'), man(maxTotal));
+  $('#maxNum').textContent = man(maxTotal);   /* 고정 표시 (애니메이션 없음) */
 
   /* ---------- 폼: 모델 옵션 / 선택 조건 요약 ---------- */
   $$('[data-model-select]').forEach(function(s){
