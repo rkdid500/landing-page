@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>스마트폰 최대 혜택 · 모델별 가격 비교</title>
-<meta name="description" content="갤럭시·아이폰 모델별 월 납부액과 혜택을 한눈에 확인하고, 연락처만 남기면 맞춤 견적을 안내합니다.">
+<meta name="description" content="갤럭시·아이폰 모델별 출고가 할인과 혜택을 한눈에 확인하고, 연락처만 남기면 맞춤 견적을 안내합니다.">
 <meta name="theme-color" content="#ffffff">
 <script>/* ?theme=orange|green|coral|purple 로 색상 미리보기 */(function(){var m=location.search.match(/[?&]theme=([a-z]+)/);if(m)document.documentElement.setAttribute("data-theme",m[1])})()</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -158,6 +158,10 @@ section{scroll-margin-top:72px}
 .pcard{background:#fff;border-radius:22px;box-shadow:0 16px 36px -24px rgba(30,20,90,.4);padding:24px 18px 18px}
 .pcard h3{font-size:19px;letter-spacing:-.02em}
 .pcard .list{margin-top:4px;font-size:13px;color:var(--muted)}
+.pcard .sup{color:var(--violet);font-weight:800;margin-left:6px}
+.pcard .cut{margin-top:12px;display:flex;flex-direction:column;align-items:center;line-height:1.15}
+.pcard .cut em{font-style:normal;font-weight:900;font-size:19px;color:var(--red);letter-spacing:-.02em}
+.pcard .cut b{font-size:30px;font-weight:900;color:var(--ink);letter-spacing:-.04em;font-variant-numeric:tabular-nums;white-space:nowrap}
 .pcard .carrier{display:inline-block;font-size:12px;font-weight:700;color:var(--violet);background:rgba(var(--accent-rgb),.09);border-radius:99px;padding:3px 10px}
 .pcard .list s{color:#9a9cb2}
 .pcard .price{margin-top:16px;font-size:14px;color:var(--muted)}
@@ -286,7 +290,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
 <section class="sec" id="prices">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="h2">모델별 월 납부액</h2>
+      <h2 class="h2">모델별 출고가 할인</h2>
       <p class="sub">자세한 상담 신청하신 후 비밀지원금까지 받아가세요!</p>
     </div>
     <div class="ctrl">
@@ -329,7 +333,7 @@ footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
     <p>상호: <span data-bind="company">[상호명]</span> | 대표자: <span data-bind="ceo">[대표자명]</span> | 사업자등록번호: <span data-bind="bizno">[000-00-00000]</span></p>
     <p>통신판매업 신고번호: <span data-bind="mailorder">[제0000-지역-0000호]</span> | 주소: <span data-bind="address">[사업장 주소]</span></p>
     <p>고객센터: <span data-bind="phone">1544-5643</span> | 이메일: <span data-bind="email">[email@example.com]</span> | 개인정보책임자: <span data-bind="privacyOfficer">[성명]</span></p>
-    <p class="legal">표시된 지원금은 번호이동 가입 기준의 당사 안내 금액이며, 통신사·요금제·가입 유형·공시일에 따라 수시로 변경될 수 있습니다. 월 납부액은 실구매가를 할부 개월 수로 나눈 값에 월 통신요금을 더한 금액이며, 통신요금은 요금제에 따라 달라집니다. 할부수수료·부가세·부가서비스 요금은 별도입니다. 사은품 및 제휴카드 혜택은 판매점 조건에 따르며 변경될 수 있습니다. 삼성, 갤럭시, Apple, 아이폰 등 상표는 각 권리자에게 있습니다.</p>
+    <p class="legal">표시된 지원금은 번호이동 가입 기준의 당사 안내 금액이며, 통신사·요금제·가입 유형·공시일에 따라 수시로 변경될 수 있습니다. 실구매가는 출고가에서 지원금을 뺀 금액이며 할부수수료·부가세·월 통신요금·부가서비스 요금은 별도입니다. 사은품 및 제휴카드 혜택은 판매점 조건에 따르며 변경될 수 있습니다. 삼성, 갤럭시, Apple, 아이폰 등 상표는 각 권리자에게 있습니다.</p>
   </div>
 </footer>
 
@@ -428,13 +432,16 @@ var CONFIG = {
   var maxTotal = topSupport + maxGift;
   $('#basis').textContent = '기기 지원금 + 사은품 + 비밀지원금';
 
-  var minMonthly = null;
+  var minMonthly = null, minBuy = null;
   C.models.forEach(function(m){ C.plans.forEach(function(p){
     var b = calc(m,p).best;
     if (!minMonthly || b.monthly < minMonthly.v) minMonthly = {v:b.monthly, m:m};
+    if (!minBuy || b.buy < minBuy) minBuy = b.buy;
   }); });
   $('#facts').innerHTML =
-    '<div><small>월 납부액</small><b>' + won(minMonthly.v) + '원~</b></div>' +
+    (C.models[0].support != null
+      ? '<div><small>기기값 최저</small><b>' + won(minBuy) + '원~</b></div>'
+      : '<div><small>월 납부액</small><b>' + won(minMonthly.v) + '원~</b></div>') +
     '<div><small>사은품</small><b>' + man(maxGift) + '만원 상당</b></div>' +
     '<div><small>제휴카드</small><b>월 ' + man(C.cardMonthly) + '만원</b></div>';
 
@@ -492,13 +499,13 @@ var CONFIG = {
   function quote(){
     if (!state.model) return null;
     var m = byId(C.models, state.model), p = byId(C.plans, state.plan), b = calc(m,p).best;
-    return {model:m.name, plan:p.name, method:methodName(b.method), monthly:b.monthly, benefit:b.benefit, list:m.list};
+    return {model:m.name, plan:p.name, method:methodName(b.method), monthly:b.monthly, buy:b.buy, port:!!b.port, benefit:b.benefit, list:m.list};
   }
   function syncSummary(){
     var q = quote();
     $$('[data-summary]').forEach(function(el){
       el.hidden = !q;
-      if (q) el.textContent = q.model + ' · ' + q.plan + ' · 월 ' + won(q.monthly) + '원';
+      if (q) el.textContent = q.port ? (q.model + ' · ' + q.method + ' · 실구매가 ' + won(q.buy) + '원') : (q.model + ' · ' + q.plan + ' · 월 ' + won(q.monthly) + '원');
     });
     $$('[data-model-select]').forEach(function(s){ s.value = q ? q.model : ''; });
   }
@@ -513,7 +520,9 @@ var CONFIG = {
   function renderPrices(){
     pills($('#brandPills'), [{v:'galaxy',html:'갤럭시'},{v:'iphone',html:'아이폰'}],
       function(it){return it.v===state.brand}, function(v){ state.brand = v; renderPrices(); });
-    if (C.plans.length > 1) {
+    if (C.models[0].support != null) {
+      $('#planPills').innerHTML = '';
+    } else if (C.plans.length > 1) {
       pills($('#planPills'), C.plans.map(function(p){return {v:p.id, html:p.name + '<small>월 ' + won(p.fee) + '원</small>'}}),
         function(it){return it.v===state.plan}, function(v){ state.plan = v; renderPrices(); syncSummary(); });
     } else {
@@ -526,20 +535,20 @@ var CONFIG = {
       var row = function(l, x, y){ return '<tr><th>' + l + '</th><td>' + x + '</td><td>' + y + '</td></tr>'; };
       var row1 = function(l, x){ return '<tr><th>' + l + '</th><td>' + x + '</td></tr>'; };
       if (r.port) {
-        var o = r.best;
+        var o = r.best, pct = Math.round((m.list - o.buy) / m.list * 100);
         return '<article class="pcard">' +
           '<h3>' + m.name + '</h3>' +
           '<p class="list"><span class="carrier">' + m.carrier + ' · ' + m.join + ' · ' + m.spec + '</span></p>' +
-          '<p class="list">출고가 <s>' + won(m.list) + '원</s></p>' +
-          '<p class="price">월 납부액<b>' + won(o.monthly) + '<small>원 부터~</small></b></p>' +
-          '<p class="how">' + m.join + ' 기준 · ' + C.months + '개월</p>' +
+          '<p class="list">출고가 <s>' + won(m.list) + '원</s> <span class="sup">지원금 ' + man(o.sub) + '만원</span></p>' +
+          '<p class="cut"><em>' + pct + '%</em><b>' + won(o.buy) + '원</b></p>' +
+          '<p class="how">' + m.join + ' 기준 실구매가</p>' +
           '<span class="ben">총 혜택 ' + won(o.benefit) + '원' + (C.hideSecret ? ' <em>+@</em>' : '') + '</span>' +
           '<button class="btn" data-pick="' + m.id + '">이 모델로 견적 받기</button>' +
           '<details class="more"><summary>상세 내역 보기</summary><table class="rc"><thead><tr><th></th><td>' + m.join + ' 기준</td></tr></thead><tbody>' +
+            row1('출고가', won(m.list)) +
             row1('지원금 합계', minus(o.sub)) +
             (C.hideSecret ? '<tr class="secret"><th>비밀지원금</th><td>상담 후 자세히 안내 @</td></tr>' : (o.store ? row1('비밀지원금', minus(o.store)) : '')) +
-            row1('실구매가', won(o.buy)) + row1('월 기기값', won(o.dev)) + row1('월 통신요금', won(o.fee)) +
-            '<tr class="tot"><th>월 납부액</th><td>' + won(o.monthly) + '</td></tr>' +
+            '<tr class="tot"><th>실구매가</th><td>' + won(o.buy) + '</td></tr>' +
           '</tbody></table></details></article>';
       }
       return '<article class="pcard">' +
@@ -563,7 +572,7 @@ var CONFIG = {
       });
     });
     $('#priceNote').textContent = (C.models[0].support != null)
-      ? '* 월 통신요금 ' + won(plan.fee) + '원 기준(요금제에 따라 달라짐) · ' + C.months + '개월 할부 · 번호이동 가입 기준 지원금 · 할부수수료·부가세 별도' + (C.hideSecret ? ' · 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '')
+      ? '* ' + '번호이동 가입 기준 · 출고가에서 지원금을 뺀 실구매가(할부수수료·부가세 별도)' + (C.hideSecret ? ' · 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '')
       : '* ' + plan.name + ' · ' + C.months + '개월 할부 · ★ 더 저렴한 방식 · 할부수수료·부가세 별도 · 통신 3사 공식 지원금 최대 금액(' + C.dataDate + ' 확인)' + (C.hideSecret ? ' 비밀지원금은 상담 후 안내되며 위 금액에서 추가로 차감됩니다.' : '');
   }
 
