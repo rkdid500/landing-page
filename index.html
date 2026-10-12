@@ -312,6 +312,37 @@ footer{background:#fff;border-top:1px solid var(--line);text-align:left;padding:
 @media(max-width:820px){.bignum .gift-ico{right:calc(100% + 6px);top:calc(50% + 58px);font-size:30px}}
 @media(max-width:480px){.bignum .gift-ico{right:calc(100% + 22px);top:calc(50% + 10px);font-size:24px}}
 @media(prefers-reduced-motion:reduce){.bignum .gift-ico{animation:none}}
+
+/* ===== 첫 화면 배치 v2: 폴드8은 아래로, 아이폰은 위로, 아이콘은 빈 자리에 ===== */
+.bignum .sl{right:calc(100% + 30px);transform:translateY(-24%) rotate(-10deg)}
+.bignum .sr{transform:translateY(-70%) rotate(11deg)}
+.bignum .gift-ico{right:calc(100% + 150px);top:calc(50% - 118px);font-size:38px}
+.bignum .money-ico{position:absolute;z-index:1;left:calc(100% + 150px);top:calc(50% + 104px);font-size:38px;line-height:1;filter:drop-shadow(0 6px 8px rgba(0,0,0,.3));animation:float 5s ease-in-out infinite;animation-delay:-3s}
+.deco .s1{left:calc(50% - 560px);top:110px}
+.deco .s2{right:calc(50% - 200px);top:120px}
+@media(max-width:820px){
+  .bignum .sl{right:calc(100% + 4px)}
+  .bignum .gift-ico{right:calc(100% + 70px);top:calc(50% - 80px);font-size:30px}
+  .bignum .money-ico{left:calc(100% + 40px);top:calc(50% + 34px);font-size:30px}
+  .deco .s1{left:18px;top:120px}.deco .s2{right:18px;top:64px}
+}
+@media(max-width:480px){
+  .bignum .sl{right:calc(100% - 14px);transform:translateY(-42%) rotate(-10deg)}
+  .bignum .sr{transform:translateY(-88%) rotate(11deg)}
+  .bignum .gift-ico{right:calc(100% + 18px);top:calc(50% - 66px);font-size:24px}
+  .bignum .money-ico{left:calc(100% + 30px);top:calc(50% + 30px);font-size:22px}
+  .deco .s1{left:18px;top:10px}.deco .s2{display:none}
+}
+@media(prefers-reduced-motion:reduce){.bignum .money-ico{animation:none}}
+
+/* 중간 폭(노트북·태블릿) 보정 */
+@media(min-width:821px) and (max-width:1100px){
+  .bignum .sl{width:200px;right:calc(100% + 14px)}
+  .bignum .sr{width:130px}
+  .bignum .gift-ico{right:calc(100% + 120px)}
+  .bignum .money-ico{left:calc(100% + 110px)}
+  .deco .s1{left:24px;top:76px}
+}
 </style>
 </head>
 <body>
@@ -322,11 +353,11 @@ footer{background:#fff;border-top:1px solid var(--line);text-align:left;padding:
 <section class="hero">
   <div class="deco" aria-hidden="true">
     <span class="spark s1">✨</span><span class="spark s2">✨</span>
-    <span class="coin c2">💸</span>
+    
   </div>
   <div class="narrow">
     <p class="kicker">지금 바꾸면 받는 혜택</p>
-    <div class="bignum"><img class="side sl" src="images/hero-fold8.webp" alt="" width="576" height="442" aria-hidden="true"><img class="side sr" src="images/hero-18pro.webp" alt="" width="298" height="442" aria-hidden="true"><span class="gift-ico" aria-hidden="true">🎁</span><span class="pre">최대</span><span class="n" id="maxNum">0</span><span class="u">만원</span></div>
+    <div class="bignum"><img class="side sl" src="images/hero-fold8.webp" alt="" width="576" height="442" aria-hidden="true"><img class="side sr" src="images/hero-18pro.webp" alt="" width="298" height="442" aria-hidden="true"><span class="gift-ico" aria-hidden="true">🎁</span><span class="money-ico" aria-hidden="true">💸</span><span class="pre">최대</span><span class="n" id="maxNum">0</span><span class="u">만원</span></div>
     <p class="basis" id="basis"></p>
 
     <div class="facts" id="facts"></div>
