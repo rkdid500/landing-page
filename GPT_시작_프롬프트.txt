@@ -1,0 +1,22 @@
+[GPT에 처음 붙여 넣을 내용]
+
+싹딜(휴대폰 비교·상담 서비스)의 스마트폰 유입용 랜딩페이지를 이어서 작업해 줘.
+첨부한 압축 파일(landing-page-handoff.zip) 안의 HANDOFF.md를 먼저 끝까지 읽고 시작해.
+
+- 페이지는 index.html 한 파일(HTML+CSS+JS)이고, 설정값은 하단 <script>의 CONFIG에 모여 있어.
+- 화면 확인용 링크: https://rkdid500.github.io/landing-page/
+- 소스 저장소: https://github.com/rkdid500/landing-page (main 브랜치, GitHub Pages)
+- HANDOFF.md의 "6. 사용자가 확정한 디자인·문구 결정"은 바꾸지 말고 유지해 줘.
+- 가장 먼저 할 일: HANDOFF.md "5. 진행 중이던 작업"
+  → 지원금 금액은 그대로 표시하고 뒤에 "+@"를 붙이고(예: 지원금 575,000원 +@),
+    공시(공통)지원금 표기는 유지하면서, 할인율과 최종 가격만 싹딜 사이트 최저가로 낮추는 것.
+    작업 전에 이 해석이 맞는지 나에게 먼저 확인해 줘.
+- 수정한 뒤에는 수정된 index.html 전체(또는 바뀐 부분)를 주고, 모바일(375px)과 PC에서 깨지지 않는지 점검해 줘.
+
+[수정본 반영 방법 - 내가 직접 할 일]
+1) GPT가 준 index.html로 C:\Users\user\Downloads\landing-page\index.html 을 교체
+2) 아래 명령 실행 (1~3분 뒤 링크에 반영)
+   cd C:\Users\user\Downloads\landing-page
+   git add index.html
+   git commit -m "수정 내용"
+   git push origin main
