@@ -229,6 +229,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 /* 상담 신청 버튼도 하단 고정 버튼과 같은 밝은 민트 */
 .submit,.submit:focus{background:linear-gradient(135deg,#3ff5d0,#17e4bb);color:#043b35}
 .submit:hover{background:linear-gradient(135deg,#2eecc6,#0fd8ae)}
+.cta-arrow{width:8px;height:13px;flex:none;margin-left:2px}
 /* 하단 고정 버튼 (기존 고정 바 대체) */
 .dock.dock-btn{background:none;border:0;box-shadow:none;padding:0;width:min(420px,calc(100% - 32px));bottom:calc(16px + env(safe-area-inset-bottom))}
 .dock.dock-btn .hero-cta{max-width:none;min-height:56px;padding:0 20px;border-radius:14px;background:linear-gradient(135deg,#3ff5d0,#17e4bb);color:#043b35;font-size:17px;font-weight:800;box-shadow:0 10px 26px #00403340}
@@ -359,7 +360,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
       <p>이메일: yjh5535@nate.com | 개인정보보호책임자: 양진혁</p>
     </div>
   </footer>
-  <aside class="dock dock-btn" id="dock" aria-label="상담 신청 바로가기"><a class="hero-cta" href="#consult">최대 지원금 받기 <span aria-hidden="true">›</span></a></aside>
+  <aside class="dock dock-btn" id="dock" aria-label="상담 신청 바로가기"><a class="hero-cta" href="#consult">최대 지원금 받기 <svg class="cta-arrow" viewBox="0 0 10 16" aria-hidden="true"><path d="M2 2l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></aside>
   <noscript><p class="wrap">이 시안의 입력 체험에는 JavaScript가 필요합니다. 실제 상담은 접수되지 않습니다.</p></noscript>
   <script>
     const form = document.getElementById('consult-form');
