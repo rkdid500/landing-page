@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://cdn.jsdelivr.net; script-src 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'none'; form-action 'none'; base-uri 'none'">
   <title>싹딜 인터넷 | 혜택 먼저, 상담은 간편하게</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
   <style>
     @font-face{font-family:"NanumSquareRound";src:url("fonts/nanum-square-round/NanumSquareRoundR.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
     @font-face{font-family:"NanumSquareRound";src:url("fonts/nanum-square-round/NanumSquareRoundB.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
@@ -155,6 +157,52 @@ html.scroll-motion .scroll-reveal{opacity:0;transform:translateY(24px);transitio
 html.scroll-motion .scroll-reveal.revealed{opacity:1;transform:translateY(0)}
 html.motion-paused .scroll-reveal{opacity:1;transform:none;transition:none}
 @media(prefers-reduced-motion:reduce){html.scroll-motion .scroll-reveal{opacity:1;transform:none;transition:none}}
+
+/* 무선랜딩과 같은 글꼴·글자 크기 체계 (Pretendard, 굵은 제목, 본문 최소 12px). 색상은 위 설정 유지 */
+:root{--font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
+body{font-family:var(--font);letter-spacing:normal;line-height:1.5;word-break:keep-all;overflow-wrap:break-word}
+.prototype{font-size:12px;letter-spacing:normal}
+.logo{font-weight:900;letter-spacing:-.04em}
+.header nav a{font-size:15px;font-weight:800}
+.hero h1{font-size:clamp(32px,3.6vw,50px);font-weight:850;line-height:1.25;letter-spacing:-.03em}
+.benefit-label{font-size:clamp(15px,2.2vw,18px);font-weight:800}
+.example{font-size:12px;font-weight:700}
+.hero .amount{font-weight:900;letter-spacing:-.06em;line-height:1.05}
+.amount small{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-.02em}
+.hero .cta{font-size:17px;font-weight:800}
+.float-chip{font-size:15px;font-weight:800}.float-chip small{font-size:12px;font-weight:600}
+.scroll-cue{font-size:13px;font-weight:700}.motion-toggle{font-size:12px;font-weight:700}
+h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:850;line-height:1.25;letter-spacing:-.025em}
+.message-bubble,.answer-bubble{font-size:16px;font-weight:700}
+.chosen{font-size:14px}.chosen strong{font-size:13px;font-weight:800}
+.field{font-size:13px;font-weight:700}.field b{font-size:12px;font-weight:800}.field input{font-size:16px}
+.consent{font-size:13px}.privacy{font-size:12.5px}.privacy p{line-height:1.7}
+.submit{font-size:17px;font-weight:800}
+.safe-note{font-size:12.5px}.form-status{font-size:13px}
+.step-label{font-size:13px;font-weight:800}
+.step h3{font-size:19px;font-weight:850;line-height:1.35;letter-spacing:-.02em}
+.step p{font-size:14px;font-weight:600}
+.faq details{font-size:15.5px}.faq summary{font-weight:700}.faq details p{font-size:14.5px;line-height:1.7}
+.footer{font-size:12.5px;line-height:1.7}
+.dock p{font-size:12px}.dock strong{font-size:19px;font-weight:900;letter-spacing:-.02em}.dock a{font-size:16px;font-weight:800}
+@media(max-width:760px){
+.header nav a{font-size:13px}
+.hero h1{font-size:clamp(28px,7vw,36px)}
+.benefit-label{font-size:15px}
+.hero .cta{font-size:16px}
+.float-chip{font-size:13px}.float-chip small{font-size:12px}
+.scroll-cue,.motion-toggle{font-size:12px}
+.message-bubble,.answer-bubble{font-size:15px}
+.step h3{font-size:19px}.step p{font-size:13px}.step-label{font-size:12px}
+.faq summary{font-size:15px}.faq details p{font-size:14px}
+.dock strong{font-size:17px}.dock a{font-size:14px}
+/* 모바일 첫 화면: 가운데 정렬 + 하단 이미지 축소 */
+.hero-copy{text-align:center}
+.benefit-label{justify-content:center}
+.hero .cta{display:flex;width:max-content;margin-inline:auto}
+.hero-art{width:74%;max-width:300px}
+.float-chip{font-size:12px;padding:8px 11px}
+}
 </style>
 </head>
 <body>
