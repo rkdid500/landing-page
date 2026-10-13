@@ -185,6 +185,16 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .faq details{font-size:15.5px}.faq summary{font-weight:700}.faq details p{font-size:14.5px;line-height:1.7}
 .footer{font-size:12.5px;line-height:1.7}
 .dock p{font-size:12px}.dock strong{font-size:19px;font-weight:900;letter-spacing:-.02em}.dock a{font-size:16px;font-weight:800}
+/* 첫 화면 밝은 배경 (위는 흰빛, 아래로 갈수록 연한 민트) + 밝은 배경에 맞춘 글자색 */
+.hero{background:linear-gradient(180deg,#f8fbff 0%,#eef8fb 40%,#dcf6ec 100%);color:#0b1b2e}
+.hero-halo{background:radial-gradient(ellipse,#bff3e166 0%,transparent 66%)}
+.hero h1{color:#0b1b2e}
+.benefit-label{color:#0b1b2e}
+.hero .amount{color:#12c68e}
+.amount small{color:#12c68e}
+.hero-art::before{background:radial-gradient(ellipse,#9df0d455 0%,#9df0d422 40%,transparent 70%)}
+.orbit{border-color:#7fd9bd40}
+@media(max-width:760px){.hero{background:linear-gradient(180deg,#f8fbff 0%,#eef8fb 40%,#dcf6ec 100%)}.hero-halo{background:radial-gradient(ellipse,#bff3e166,transparent 67%)}}
 /* 신청 절차 카드 (01 상담 · 02 가입 결정 · 03 설치) */
 .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .flow-card{position:relative;overflow:hidden;isolation:isolate;border-radius:24px;padding:28px;aspect-ratio:392/450;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:#0b1b2e}
