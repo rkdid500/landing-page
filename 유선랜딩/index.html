@@ -282,6 +282,19 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
       status.focus();
     });
     nameInput.addEventListener('input', () => nameInput.setCustomValidity(''));
+    /* 첫 화면 숫자: 0 → 최종값 카운트업 (무선랜딩과 같은 방식) */
+    (function countUp(el, to){
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = to; return; }
+      var t0 = null, dur = 1000;
+      el.textContent = 0;
+      setTimeout(function(){ el.textContent = to; }, dur + 250);   /* 애니메이션이 멈춘 환경 대비 */
+      requestAnimationFrame(function step(t){
+        if (!t0) t0 = t;
+        var p = Math.min(1, (t - t0)/dur);
+        el.textContent = Math.round(to*(1 - Math.pow(1-p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      });
+    })(document.getElementById('hero-max'), 52);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(entries => {
         document.getElementById('dock').hidden = entries[0].isIntersecting;
