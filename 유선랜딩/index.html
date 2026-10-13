@@ -208,6 +208,38 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .hero-cta span{font-size:24px;line-height:1;margin-top:-3px}
 .hero-cta:hover{background:linear-gradient(135deg,#2eecc6,#0fd8ae);transform:translateY(-2px);box-shadow:0 16px 32px #00a98347}
 .journey h2 span{color:#00ad8a}
+/* 추천 요금제 (임시 자리) */
+.plans{background:linear-gradient(180deg,#f3fbff,#fff);padding-block:72px 40px}
+.plans h2{text-align:center;color:#082b46}.plans h2 span{color:#00ad8a}
+.plan-list{list-style:none;margin:32px auto 0;padding:0;display:grid;gap:16px;max-width:760px}
+.plan-card{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:24px;align-items:center;background:#fff;border:1px solid #e3eef0;border-radius:20px;padding:24px;box-shadow:0 8px 24px #0b2b4610}
+.plan-img{aspect-ratio:5/4;border-radius:14px;background:repeating-linear-gradient(45deg,#eef4f6 0 10px,#f6fafb 10px 20px);border:1px dashed #c9d8dc;display:grid;place-items:center;font-size:13px;font-weight:600;color:#8aa0a8}
+.plan-info{min-width:0;text-align:left}
+.plan-tag{display:inline-block;padding:6px 14px;border-radius:99px;font-size:14px;font-weight:800;color:#0b2b46}
+.plan-tag.t1{background:#c9efff}.plan-tag.t2{background:#ffd9f1}.plan-tag.t3{background:#fff0b8}
+.plan-hash{margin-top:10px;font-size:14px;font-weight:600;color:#6b7c86}
+.plan-info dl{margin:14px 0 0;display:grid;gap:10px}
+.plan-info dl>div{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.plan-info dt{font-size:14px;font-weight:600;color:#3d4f5a;white-space:nowrap;padding-top:6px}
+.plan-info dd{margin:0;text-align:right;font-weight:800;color:#0b1b2e;white-space:nowrap}
+.plan-info .fee{font-size:16px}.plan-info .fee b{font-size:28px;font-weight:900;letter-spacing:-.02em}
+.plan-info .fee small{display:block;font-size:12px;font-weight:500;color:#9aa8b0}
+.plan-info .gift{font-size:20px;color:#ff4d4f}.plan-info .gift b{font-size:28px;font-weight:900;letter-spacing:-.02em}
+@media(max-width:760px){
+.plans{padding-block:52px 28px}
+.plan-list{margin-top:24px;gap:12px}
+.plan-card{grid-template-columns:minmax(0,36%) minmax(0,1fr);gap:14px;padding:16px;border-radius:18px}
+.plan-img{aspect-ratio:1/1;font-size:12px}
+.plan-tag{font-size:12px;padding:5px 10px}
+.plan-hash{margin-top:6px;font-size:12px}
+.plan-info dl{margin-top:8px;gap:6px}
+.plan-info dl>div{flex-direction:column;gap:0}
+.plan-info dt{font-size:12px;padding-top:0}
+.plan-info dd{text-align:left}
+.plan-info .fee{font-size:13px}.plan-info .fee b{font-size:20px}
+.plan-info .fee small{display:inline;margin-left:4px}
+.plan-info .gift{font-size:15px}.plan-info .gift b{font-size:20px}
+}
 /* 하단 회사 정보 (무선랜딩·sakd.co.kr과 동일) */
 .site-footer{background:#fff;border-top:1px solid #d5e5e8;text-align:left;padding:40px 0 110px;font-size:12.5px;color:#7b7d95;line-height:1.5}
 .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
@@ -320,6 +352,45 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
         </form>
       </div>
     </section>
+    <!-- 추천 요금제 (임시 자리: 이미지·문구·금액은 확정 후 교체) -->
+    <section class="plans" id="plans" aria-labelledby="plans-title"><div class="wrap">
+      <h2 id="plans-title">골라 쓰는 <span>추천 요금제</span></h2>
+      <ul class="plan-list">
+        <li class="plan-card">
+          <div class="plan-img" aria-hidden="true">이미지 자리</div>
+          <div class="plan-info">
+            <span class="plan-tag t1">🧑 1인 가구 추천</span>
+            <p class="plan-hash">#해시태그 #해시태그</p>
+            <dl>
+              <div><dt>💰 예상 요금</dt><dd class="fee">월<b>00,000</b>원<small>(결합 조건)</small></dd></div>
+              <div><dt>🎁 예상 지원금</dt><dd class="gift"><b>00</b>만원</dd></div>
+            </dl>
+          </div>
+        </li>
+        <li class="plan-card">
+          <div class="plan-img" aria-hidden="true">이미지 자리</div>
+          <div class="plan-info">
+            <span class="plan-tag t2">💞 신혼부부 추천</span>
+            <p class="plan-hash">#해시태그 #해시태그</p>
+            <dl>
+              <div><dt>💰 예상 요금</dt><dd class="fee">월<b>00,000</b>원<small>(결합 조건)</small></dd></div>
+              <div><dt>🎁 예상 지원금</dt><dd class="gift"><b>00</b>만원</dd></div>
+            </dl>
+          </div>
+        </li>
+        <li class="plan-card">
+          <div class="plan-img" aria-hidden="true">이미지 자리</div>
+          <div class="plan-info">
+            <span class="plan-tag t3">👨‍👩‍👧 가족 추천</span>
+            <p class="plan-hash">#해시태그 #해시태그</p>
+            <dl>
+              <div><dt>💰 예상 요금</dt><dd class="fee">월<b>00,000</b>원<small>(결합 조건)</small></dd></div>
+              <div><dt>🎁 예상 지원금</dt><dd class="gift"><b>00</b>만원</dd></div>
+            </dl>
+          </div>
+        </li>
+      </ul>
+    </div></section>
     <section class="journey friendly-journey" id="journey" aria-labelledby="journey-title"><div class="wrap">
       <h2 id="journey-title">신청 후에는 <span>이렇게 진행돼요</span></h2>
       <div class="gift-bow" aria-hidden="true"><svg viewBox="0 0 120 55" fill="none"><path d="M60 47C40 43 10 31 14 15 19-6 54 11 60 47Zm0 0C80 43 110 31 106 15 101-6 66 11 60 47Z" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><ol class="flow">
