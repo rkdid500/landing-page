@@ -196,8 +196,8 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .orbit{border-color:#7fd9bd40}
 @media(max-width:760px){.hero{background:linear-gradient(180deg,#f8fbff 0%,#eef8fb 40%,#dcf6ec 100%)}.hero-halo{background:radial-gradient(ellipse,#bff3e166,transparent 67%)}}
 /* 제목 위 와이파이 아이콘 */
-.hero-wifi{display:block;width:96px;height:auto;margin:0 auto 14px;filter:drop-shadow(0 10px 14px #2a56ff26);animation:wifi-float 4s ease-in-out infinite}
-@keyframes wifi-float{0%,100%{translate:0 0}50%{translate:0 -6px}}
+.hero-wifi{display:block;width:96px;height:auto;margin:0 auto 14px;filter:drop-shadow(0 10px 14px #2a56ff26);animation:wifi-spin 4s linear infinite;transform-style:preserve-3d}
+@keyframes wifi-spin{from{transform:perspective(600px) rotateY(0deg)}to{transform:perspective(600px) rotateY(360deg)}}
 @media(max-width:760px){.hero-wifi{width:76px;margin-bottom:10px}}
 /* 첫 화면 하단 버튼 */
 .hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #00a98333;transition:transform .2s,box-shadow .2s,background .2s}
