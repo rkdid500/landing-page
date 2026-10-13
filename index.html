@@ -572,7 +572,7 @@ var CONFIG = {
   })[0];
   var topSupport = supportOf(top) + (C.hideSecret ? 0 : (top.store||0));
   var maxTotal = topSupport + maxGift;
-  $('#basis').textContent = '기기지원금(번호이동시) + 사은품 + 비밀지원금 + 인터넷 가입시';
+  $('#basis').textContent = '기기지원금 + 사은품 + 비밀지원금 + 인터넷 가입시';
 
   var minMonthly = null, minBuy = null;
   C.models.forEach(function(m){ C.plans.forEach(function(p){
