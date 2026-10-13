@@ -199,7 +199,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .hero-wifi{display:block;width:96px;height:auto;margin:0 auto 14px;filter:drop-shadow(0 10px 14px #2a56ff26);animation:wifi-spin 4s linear infinite;transform-style:preserve-3d}
 @keyframes wifi-spin{from{transform:perspective(600px) rotateY(0deg)}to{transform:perspective(600px) rotateY(360deg)}}
 @media(max-width:760px){.hero-wifi{width:76px;margin-bottom:10px}}
-/* 52만원 입체 숫자: 아래·오른쪽으로 그림자를 1px씩 겹쳐 두께를 만들고, 마지막에 부드러운 바닥 그림자 (글자라서 카운팅 유지) */
+/* 160만원 입체 숫자: 아래·오른쪽으로 그림자를 1px씩 겹쳐 두께를 만들고, 마지막에 부드러운 바닥 그림자 (글자라서 카운팅 유지) */
 .hero .amount,.hero .amount small{color:#1cd092;text-shadow:1px 1px 0 #17bd84,2px 2px 0 #14b37c,3px 3px 0 #11a974,4px 4px 0 #0f9f6c,5px 5px 0 #0d9565,6px 6px 0 #0b8b5e,7px 7px 0 #098157,10px 14px 18px #0a7a5040}
 .hero .amount small{text-shadow:1px 1px 0 #14b37c,2px 3px 5px #0a7a5026}
 @media(max-width:760px){.hero .amount{text-shadow:1px 1px 0 #17bd84,2px 2px 0 #14b37c,3px 3px 0 #11a974,4px 4px 0 #0f9f6c,5px 5px 0 #0d9565,6px 6px 0 #098157,8px 11px 14px #0a7a5040}}
@@ -343,7 +343,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
           <img class="hero-wifi" src="assets/internet-wifi.webp" alt="" width="240" height="180">
           <h1 id="hero-title">인터넷 바꾸고,<br>사은품도 크게 받으세요.</h1>
           <p class="benefit-label">가입 사은품 최대</p>
-          <p class="amount"><span id="hero-max">52</span><small>만원</small></p>        </div>
+          <p class="amount"><span id="hero-max">160</span><small>만원</small></p>        </div>
         <figure class="hero-art"><span class="spark spark-one" aria-hidden="true">✦</span><span class="spark spark-two" aria-hidden="true">✧</span><span class="spark spark-three" aria-hidden="true">✦</span><span class="glass-tile tile-one" aria-hidden="true"><img src="assets/icons/wifi.svg" alt="" width="32" height="32"></span>
           <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
           <img class="hero-gift" src="assets/hero-mint-v2.png" alt="민트 리본 선물 상자와 와이파이 공유기, 공중에 떠 있는 금화 입체 그래픽" width="1024" height="1024" fetchpriority="high">
@@ -479,7 +479,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
         el.textContent = Math.round(to*(1 - Math.pow(1-p, 3)));
         if (p < 1) requestAnimationFrame(step);
       });
-    })(document.getElementById('hero-max'), 52);
+    })(document.getElementById('hero-max'), 160);
   </script>
 <script>
 const progress = document.querySelector('.scroll-progress');
