@@ -203,6 +203,11 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .hero .amount,.hero .amount small{color:#1cd092;text-shadow:1px 1px 0 #17bd84,2px 2px 0 #14b37c,3px 3px 0 #11a974,4px 4px 0 #0f9f6c,5px 5px 0 #0d9565,6px 6px 0 #0b8b5e,7px 7px 0 #098157,10px 14px 18px #0a7a5040}
 .hero .amount small{text-shadow:1px 1px 0 #14b37c,2px 3px 5px #0a7a5026}
 @media(max-width:760px){.hero .amount{text-shadow:1px 1px 0 #17bd84,2px 2px 0 #14b37c,3px 3px 0 #11a974,4px 4px 0 #0f9f6c,5px 5px 0 #0d9565,6px 6px 0 #098157,8px 11px 14px #0a7a5040}}
+/* 이미지 왼쪽 아래 '당일 설치·당일 지급!' 띠 (로켓 이미지는 추후 교체, 지금은 이모지) */
+.same-day{position:absolute;z-index:2;left:-2%;bottom:2%;display:flex;align-items:center;gap:6px;padding:9px 18px 9px 44px;border-radius:99px;background:linear-gradient(135deg,#ff3d5e,#ff2a4f);color:#fff;font-size:17px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;box-shadow:0 10px 22px #ff2a4f40;animation:chip-float 5s ease-in-out infinite;animation-delay:-2.5s}
+.same-day em{font-style:normal;color:#ffe14d}
+.same-day-ico{position:absolute;left:-6px;top:50%;transform:translateY(-55%) rotate(-10deg);font-size:38px;line-height:1;font-family:"Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif;filter:drop-shadow(0 6px 8px #0003)}
+@media(max-width:760px){.same-day{font-size:14px;padding:7px 14px 7px 36px;left:0;bottom:1%}.same-day-ico{font-size:30px;left:-4px}}
 /* 첫 화면 하단 버튼 */
 .hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:linear-gradient(135deg,#3ff5d0,#17e4bb);color:#043b35;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #00a98333;transition:transform .2s,box-shadow .2s,background .2s}
 .hero-cta span{font-size:24px;line-height:1;margin-top:-3px}
@@ -331,7 +336,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
           <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
           <img class="hero-gift" src="assets/hero-mint-v2.png" alt="민트 리본 선물 상자와 와이파이 공유기, 공중에 떠 있는 금화 입체 그래픽" width="1024" height="1024" fetchpriority="high">
           <span class="float-chip chip-wifi"><img src="assets/icons/wifi.svg" alt="" width="24" height="24">인터넷 + TV</span>
-          <span class="float-chip chip-gift"><img src="assets/icons/gift.svg" alt="" width="24" height="24">최대 52만원</span>
+          <span class="same-day"><span class="same-day-ico" aria-hidden="true">🚀</span><span>당일 <em>설치</em> · 당일 <em>지급!</em></span></span>
           <span class="signal-dot dot-one" aria-hidden="true"></span><span class="signal-dot dot-two" aria-hidden="true"></span>
         </figure>
       </div>
