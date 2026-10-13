@@ -197,9 +197,13 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 @media(max-width:760px){.hero{background:linear-gradient(180deg,#f8fbff 0%,#eef8fb 40%,#dcf6ec 100%)}.hero-halo{background:radial-gradient(ellipse,#bff3e166,transparent 67%)}}
 /* 첫 화면 하단 버튼 */
 .hero-cta-wrap{display:flex;justify-content:center;padding-bottom:56px;position:relative;z-index:3}
-.hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:linear-gradient(135deg,#2a56ff,#3f7dff);color:#fff;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #2a56ff38;transition:transform .2s,box-shadow .2s}
+.hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #00a98333;transition:transform .2s,box-shadow .2s,background .2s}
 .hero-cta span{font-size:24px;line-height:1;margin-top:-3px}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 16px 32px #2a56ff4d}
+.hero-cta:hover{background:#00b991;transform:translateY(-2px);box-shadow:0 16px 32px #00a98347}
+/* 하단 고정 버튼 (기존 고정 바 대체) */
+.dock.dock-btn{background:none;border:0;box-shadow:none;padding:0;width:min(420px,calc(100% - 32px));bottom:calc(16px + env(safe-area-inset-bottom))}
+.dock.dock-btn .hero-cta{max-width:none;min-height:56px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:17px;font-weight:800;box-shadow:0 10px 26px #00403340}
+.dock.dock-btn .hero-cta:hover{background:#00b991}
 @media(max-width:760px){.hero-grid{padding-bottom:20px}.hero-cta-wrap{padding-bottom:40px}.hero-cta{min-height:56px;font-size:16px}}
 /* 신청 절차 카드 (01 상담 · 02 가입 결정 · 03 설치) */
 .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -303,7 +307,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
     </section>
   </main>
   <footer class="footer"><div class="wrap">© 싹딜 · 인터넷 랜딩페이지 구성 시안<br>운영 전 실제 혜택, 회사 정보, 개인정보 안내 및 접수 기능 연결이 필요합니다.</div></footer>
-  <aside class="dock" id="dock" aria-label="상담 신청 바로가기"><div class="wrap"><div><p>인터넷 + TV 사은품</p><strong id="dock-offer">최대 52만원</strong></div><a href="#consult">내 혜택 상담받기 ↗</a></div></aside>
+  <aside class="dock dock-btn" id="dock" aria-label="상담 신청 바로가기"><a class="hero-cta" href="#consult">내 조건으로 혜택 비교하기 <span aria-hidden="true">›</span></a></aside>
   <noscript><p class="wrap">이 시안의 입력 체험에는 JavaScript가 필요합니다. 실제 상담은 접수되지 않습니다.</p></noscript>
   <script>
     const form = document.getElementById('consult-form');
@@ -336,9 +340,15 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
       });
     })(document.getElementById('hero-max'), 52);
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(entries => {
-        document.getElementById('dock').hidden = entries[0].isIntersecting;
-      }).observe(form);
+      /* 하단 고정 버튼: 첫 화면 버튼이나 상담 폼이 보이는 동안에는 숨김 (같은 버튼이 두 개 보이지 않게) */
+      const dock = document.getElementById('dock');
+      const visible = new Set();
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
+        dock.hidden = visible.size > 0;
+      });
+      io.observe(form);
+      io.observe(document.querySelector('.hero-cta-wrap .hero-cta'));
     }
   </script>
 <script>
