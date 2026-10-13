@@ -204,6 +204,22 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .hero-cta span{font-size:24px;line-height:1;margin-top:-3px}
 .hero-cta:hover{background:linear-gradient(135deg,#2eecc6,#0fd8ae);transform:translateY(-2px);box-shadow:0 16px 32px #00a98347}
 .journey h2 span{color:#00ad8a}
+/* 하단 회사 정보 (무선랜딩·sakd.co.kr과 동일) */
+.site-footer{background:#fff;border-top:1px solid #d5e5e8;text-align:left;padding:40px 0 110px;font-size:12.5px;color:#7b7d95;line-height:1.5}
+.ft{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.ft-logo{display:block;height:30px;width:auto}
+.ft-tag{margin-top:16px;font-size:15px;font-weight:700;line-height:1.5;color:#082b46}
+.ft-bottom{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px}
+.ft-bottom small{font-size:13.5px;color:#868aa3}
+.ft-bottom nav{display:flex;flex-wrap:wrap;gap:0 18px}
+.ft-bottom nav a{display:inline-flex;align-items:center;min-height:44px;font-size:13.5px;color:#868aa3;text-decoration:none}
+.ft-bottom nav a:hover{color:#007e70;text-decoration:underline}
+.ft-cert{display:block;flex:none}
+.ft-cert img{display:block;width:140px;height:auto}
+.ft-company{margin-top:24px;padding-top:20px;border-top:1px solid #d5e5e8;font-size:12.5px;line-height:1.7;color:#868aa3}
+.ft-company p+p{margin-top:2px}
+@media(max-width:560px){.ft-cert img{width:120px}}
+.faq details[open]{background:#fff}
 /* FAQ 플러스: 글자 대신 선으로 그려 원 정중앙에 맞춤 */
 .faq summary::after,.faq details[open] summary::after{content:"";font-size:0;background:linear-gradient(#007b63,#007b63) center/12px 2px no-repeat,linear-gradient(#007b63,#007b63) center/2px 12px no-repeat,#bdf4dd}
 /* 상담 신청 버튼도 하단 고정 버튼과 같은 밝은 민트 */
@@ -314,7 +330,31 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
       <details><summary>사은품은 언제 받을 수 있나요?</summary><p>상품과 가입 조건에 따라 다릅니다. 운영 전 실제 지급 일정·조건을 확정해 안내해야 합니다.</p></details>
     </section>
   </main>
-  <footer class="footer"><div class="wrap">© 싹딜 · 인터넷 랜딩페이지 구성 시안<br>운영 전 실제 혜택, 회사 정보, 개인정보 안내 및 접수 기능 연결이 필요합니다.</div></footer>
+  <footer class="site-footer">
+    <div class="wrap ft">
+      <div class="ft-left">
+        <a href="https://sakd.co.kr/" target="_blank" rel="noopener" aria-label="싹딜 홈페이지"><img class="ft-logo" src="assets/sakd-logo-sm.png" alt="싹딜" width="72" height="30"></a>
+        <p class="ft-tag">필요한 모든 것을,<br>가장 합리적인 선택으로</p>
+        <div class="ft-bottom">
+          <small>© 2026 싹딜. All rights reserved.</small>
+          <nav aria-label="약관 및 고객센터">
+            <a href="https://sakd.co.kr/terms" target="_blank" rel="noopener">이용약관</a>
+            <a href="https://sakd.co.kr/privacy-policy" target="_blank" rel="noopener">개인정보처리방침</a>
+            <a href="https://sakd.co.kr/marketing-consent" target="_blank" rel="noopener">마케팅 정보 수신 동의</a>
+            <a href="tel:15445643">고객센터 1544-5643</a>
+          </nav>
+        </div>
+      </div>
+      <a class="ft-cert" href="https://ictmarket.or.kr:8443/precon/pop_CertIcon.do?PRECON_REQ_ID=PRE0000203285&amp;YN=1" target="_blank" rel="noopener noreferrer" aria-label="사전승낙서 확인 (새 창)">
+        <img src="assets/sakd-preconsent.png" alt="제이에이치 온라인판매점 사전승낙서 확인" width="177" height="139" loading="lazy">
+      </a>
+    </div>
+    <div class="wrap ft-company">
+      <p>상호: 제이에이치 | 대표자: 양진혁 | 사업자등록번호: 349-03-03198</p>
+      <p>통신판매업 신고번호: 제 2025-대전서구-0038 호 | 주소: 대전광역시 서구 둔산로 137번길 21, 3층 331호 (둔산동)</p>
+      <p>이메일: yjh5535@nate.com | 개인정보보호책임자: 양진혁</p>
+    </div>
+  </footer>
   <aside class="dock dock-btn" id="dock" aria-label="상담 신청 바로가기"><a class="hero-cta" href="#consult">내 조건으로 혜택 비교하기 <span aria-hidden="true">›</span></a></aside>
   <noscript><p class="wrap">이 시안의 입력 체험에는 JavaScript가 필요합니다. 실제 상담은 접수되지 않습니다.</p></noscript>
   <script>
