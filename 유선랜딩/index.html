@@ -200,7 +200,6 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 @keyframes wifi-float{0%,100%{translate:0 0}50%{translate:0 -6px}}
 @media(max-width:760px){.hero-wifi{width:76px;margin-bottom:10px}}
 /* 첫 화면 하단 버튼 */
-.hero-cta-wrap{display:flex;justify-content:center;padding-bottom:56px;position:relative;z-index:3}
 .hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #00a98333;transition:transform .2s,box-shadow .2s,background .2s}
 .hero-cta span{font-size:24px;line-height:1;margin-top:-3px}
 .hero-cta:hover{background:#00b991;transform:translateY(-2px);box-shadow:0 16px 32px #00a98347}
@@ -208,7 +207,6 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .dock.dock-btn{background:none;border:0;box-shadow:none;padding:0;width:min(420px,calc(100% - 32px));bottom:calc(16px + env(safe-area-inset-bottom))}
 .dock.dock-btn .hero-cta{max-width:none;min-height:56px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:17px;font-weight:800;box-shadow:0 10px 26px #00403340}
 .dock.dock-btn .hero-cta:hover{background:#00b991}
-@media(max-width:760px){.hero-grid{padding-bottom:20px}.hero-cta-wrap{padding-bottom:40px}.hero-cta{min-height:56px;font-size:16px}}
 /* 신청 절차 카드 (01 상담 · 02 가입 결정 · 03 설치) */
 .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .flow-card{position:relative;overflow:hidden;isolation:isolate;border-radius:24px;padding:28px;aspect-ratio:392/450;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:#0b1b2e}
@@ -278,7 +276,6 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
           <span class="signal-dot dot-one" aria-hidden="true"></span><span class="signal-dot dot-two" aria-hidden="true"></span>
         </figure>
       </div>
-      <div class="wrap hero-cta-wrap"><a class="hero-cta" href="#consult">내 조건으로 혜택 비교하기 <span aria-hidden="true">›</span></a></div>
     </section>
     <section class="consult" id="consult" aria-labelledby="consult-title">
       <div class="wrap consult-grid">
@@ -344,17 +341,6 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
         if (p < 1) requestAnimationFrame(step);
       });
     })(document.getElementById('hero-max'), 52);
-    if ('IntersectionObserver' in window) {
-      /* 하단 고정 버튼: 첫 화면 버튼이나 상담 폼이 보이는 동안에는 숨김 (같은 버튼이 두 개 보이지 않게) */
-      const dock = document.getElementById('dock');
-      const visible = new Set();
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => e.isIntersecting ? visible.add(e.target) : visible.delete(e.target));
-        dock.hidden = visible.size > 0;
-      });
-      io.observe(form);
-      io.observe(document.querySelector('.hero-cta-wrap .hero-cta'));
-    }
   </script>
 <script>
 const progress = document.querySelector('.scroll-progress');
