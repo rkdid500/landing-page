@@ -195,6 +195,12 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .hero-art::before{background:radial-gradient(ellipse,#9df0d455 0%,#9df0d422 40%,transparent 70%)}
 .orbit{border-color:#7fd9bd40}
 @media(max-width:760px){.hero{background:linear-gradient(180deg,#f8fbff 0%,#eef8fb 40%,#dcf6ec 100%)}.hero-halo{background:radial-gradient(ellipse,#bff3e166,transparent 67%)}}
+/* 첫 화면 하단 버튼 */
+.hero-cta-wrap{display:flex;justify-content:center;padding-bottom:56px;position:relative;z-index:3}
+.hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:linear-gradient(135deg,#2a56ff,#3f7dff);color:#fff;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #2a56ff38;transition:transform .2s,box-shadow .2s}
+.hero-cta span{font-size:24px;line-height:1;margin-top:-3px}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 16px 32px #2a56ff4d}
+@media(max-width:760px){.hero-grid{padding-bottom:20px}.hero-cta-wrap{padding-bottom:40px}.hero-cta{min-height:56px;font-size:16px}}
 /* 신청 절차 카드 (01 상담 · 02 가입 결정 · 03 설치) */
 .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .flow-card{position:relative;overflow:hidden;isolation:isolate;border-radius:24px;padding:28px;aspect-ratio:392/450;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:#0b1b2e}
@@ -263,6 +269,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
           <span class="signal-dot dot-one" aria-hidden="true"></span><span class="signal-dot dot-two" aria-hidden="true"></span>
         </figure>
       </div>
+      <div class="wrap hero-cta-wrap"><a class="hero-cta" href="#consult">내 조건으로 혜택 비교하기 <span aria-hidden="true">›</span></a></div>
     </section>
     <section class="consult" id="consult" aria-labelledby="consult-title">
       <div class="wrap consult-grid">
