@@ -195,6 +195,10 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .hero-art::before{background:radial-gradient(ellipse,#9df0d455 0%,#9df0d422 40%,transparent 70%)}
 .orbit{border-color:#7fd9bd40}
 @media(max-width:760px){.hero{background:linear-gradient(180deg,#f8fbff 0%,#eef8fb 40%,#dcf6ec 100%)}.hero-halo{background:radial-gradient(ellipse,#bff3e166,transparent 67%)}}
+/* 제목 위 와이파이 아이콘 */
+.hero-wifi{display:block;width:96px;height:auto;margin:0 auto 14px;filter:drop-shadow(0 10px 14px #2a56ff26);animation:wifi-float 4s ease-in-out infinite}
+@keyframes wifi-float{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@media(max-width:760px){.hero-wifi{width:76px;margin-bottom:10px}}
 /* 첫 화면 하단 버튼 */
 .hero-cta-wrap{display:flex;justify-content:center;padding-bottom:56px;position:relative;z-index:3}
 .hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #00a98333;transition:transform .2s,box-shadow .2s,background .2s}
@@ -262,6 +266,7 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
     <section class="hero" aria-labelledby="hero-title"><div class="hero-halo" aria-hidden="true"></div><div class="hero-dots" aria-hidden="true"></div><div class="light-orb orb-blue" aria-hidden="true"></div><div class="light-orb orb-cyan" aria-hidden="true"></div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
+          <img class="hero-wifi" src="assets/internet-wifi.webp" alt="" width="240" height="180">
           <h1 id="hero-title">인터넷 바꾸고,<br>사은품도 크게 받으세요.</h1>
           <p class="benefit-label">가입 사은품 최대</p>
           <p class="amount"><span id="hero-max">52</span><small>만원</small></p>        </div>
