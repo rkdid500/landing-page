@@ -200,13 +200,13 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 @keyframes wifi-spin{from{transform:perspective(600px) rotateY(0deg)}to{transform:perspective(600px) rotateY(360deg)}}
 @media(max-width:760px){.hero-wifi{width:76px;margin-bottom:10px}}
 /* 첫 화면 하단 버튼 */
-.hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #00a98333;transition:transform .2s,box-shadow .2s,background .2s}
+.hero-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:420px;min-height:60px;padding:0 20px;border-radius:14px;background:linear-gradient(135deg,#3ff5d0,#17e4bb);color:#043b35;font-size:18px;font-weight:800;text-decoration:none;box-shadow:0 12px 28px #00a98333;transition:transform .2s,box-shadow .2s,background .2s}
 .hero-cta span{font-size:24px;line-height:1;margin-top:-3px}
-.hero-cta:hover{background:#00b991;transform:translateY(-2px);box-shadow:0 16px 32px #00a98347}
+.hero-cta:hover{background:linear-gradient(135deg,#2eecc6,#0fd8ae);transform:translateY(-2px);box-shadow:0 16px 32px #00a98347}
 /* 하단 고정 버튼 (기존 고정 바 대체) */
 .dock.dock-btn{background:none;border:0;box-shadow:none;padding:0;width:min(420px,calc(100% - 32px));bottom:calc(16px + env(safe-area-inset-bottom))}
-.dock.dock-btn .hero-cta{max-width:none;min-height:56px;padding:0 20px;border-radius:14px;background:#00cda4;color:#043b35;font-size:17px;font-weight:800;box-shadow:0 10px 26px #00403340}
-.dock.dock-btn .hero-cta:hover{background:#00b991}
+.dock.dock-btn .hero-cta{max-width:none;min-height:56px;padding:0 20px;border-radius:14px;background:linear-gradient(135deg,#3ff5d0,#17e4bb);color:#043b35;font-size:17px;font-weight:800;box-shadow:0 10px 26px #00403340}
+.dock.dock-btn .hero-cta:hover{background:linear-gradient(135deg,#2eecc6,#0fd8ae)}
 /* 신청 절차 카드 (01 상담 · 02 가입 결정 · 03 설치) */
 .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .flow-card{position:relative;overflow:hidden;isolation:isolate;border-radius:24px;padding:28px;aspect-ratio:392/450;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:#0b1b2e}
