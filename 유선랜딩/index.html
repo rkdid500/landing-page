@@ -246,6 +246,13 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .plan-info .fee small{display:inline;margin-left:4px;font-size:12px}
 .plan-info .gift{font-size:15px}.plan-info .gift b{font-size:20px}
 }
+/* 추천 요금제 PC도 모바일과 같은 정렬: 텍스트 오른쪽 정렬, 배지는 텍스트 묶음 가운데 */
+.plan-info{justify-self:end;width:max-content;max-width:100%;text-align:right}
+.plan-tag{display:block;width:fit-content;margin-inline:auto}
+.plan-info dl>div{flex-direction:column;align-items:flex-end;gap:0}
+.plan-info dt{padding-top:0}
+.plan-info dd{text-align:right}
+.plan-info .fee small{display:inline;margin-left:4px}
 /* 하단 회사 정보 (무선랜딩·sakd.co.kr과 동일) */
 .site-footer{background:#fff;border-top:1px solid #d5e5e8;text-align:left;padding:40px 0 110px;font-size:12.5px;color:#7b7d95;line-height:1.5}
 .ft{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
