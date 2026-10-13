@@ -185,6 +185,26 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
 .faq details{font-size:15.5px}.faq summary{font-weight:700}.faq details p{font-size:14.5px;line-height:1.7}
 .footer{font-size:12.5px;line-height:1.7}
 .dock p{font-size:12px}.dock strong{font-size:19px;font-weight:900;letter-spacing:-.02em}.dock a{font-size:16px;font-weight:800}
+/* 신청 절차 카드 (01 상담 · 02 가입 결정 · 03 설치) */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.flow-card{position:relative;overflow:hidden;isolation:isolate;border-radius:24px;padding:28px;aspect-ratio:392/450;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:#0b1b2e}
+.fc1{background:linear-gradient(135deg,#3ff0c6 0%,#6bffe0 100%)}
+.fc2{background:linear-gradient(135deg,#ff9a14 0%,#ffc449 100%)}
+.fc3{background:linear-gradient(135deg,#2a56ff 0%,#3f7dff 100%);color:#fff}
+.flow-tag{display:inline-block;background:rgba(255,255,255,.88);color:#0b1b2e;font-size:14px;font-weight:800;line-height:1;padding:10px 20px;border-radius:99px}
+.flow-card h3{margin-top:24px;font-size:clamp(28px,2.9vw,40px);font-weight:900;line-height:1.28;letter-spacing:-.03em;color:inherit;word-break:keep-all}
+.flow-card p{margin-top:auto;position:relative;z-index:1;font-size:14px;font-weight:600;line-height:1.45;color:inherit;max-width:52%}
+.flow-card img{position:absolute;z-index:-1;right:2%;bottom:3%;width:62%;height:auto;pointer-events:none}
+@media(max-width:1050px) and (min-width:761px){.flow{gap:14px}.flow-card{padding:22px}.flow-tag{font-size:13px;padding:9px 16px}.flow-card p{font-size:13px}}
+@media(max-width:760px){
+.flow{grid-template-columns:1fr;gap:14px}
+.flow-card{aspect-ratio:auto;min-height:230px;padding:24px 22px}
+.flow-tag{font-size:13px;padding:9px 16px}
+.flow-card h3{margin-top:18px;font-size:27px}
+.flow-card p{font-size:13.5px;max-width:55%}
+.flow-card img{width:52%;max-width:220px;right:0;bottom:2%}
+}
+@media(max-width:360px){.flow-card h3{font-size:24px}.flow-card img{width:48%}}
 /* 말풍선은 글자 길이에 맞춤 */
 .message-bubble,.answer-bubble{min-width:0;width:fit-content;max-width:100%;gap:4px}
 .message-bubble,.answer-bubble{align-items:center;line-height:1.3}
@@ -252,10 +272,10 @@ h2,.consult h2,.journey h2,.faq h2{font-size:clamp(26px,4.2vw,36px);font-weight:
     </section>
     <section class="journey friendly-journey" id="journey" aria-labelledby="journey-title"><div class="wrap">
       <h2 id="journey-title">신청 후에는 <span>이렇게 진행돼요</span></h2>
-      <div class="gift-bow" aria-hidden="true"><svg viewBox="0 0 120 55" fill="none"><path d="M60 47C40 43 10 31 14 15 19-6 54 11 60 47Zm0 0C80 43 110 31 106 15 101-6 66 11 60 47Z" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><ol class="steps">
-        <li class="step"><span class="step-label">01 · 상담</span><h3>내가 받을 혜택 확인</h3><p>내 조건에 맞는 혜택을 안내해요.</p><div class="step-icon"><span class="emoji" aria-hidden="true">💬</span></div></li>
-        <li class="step"><span class="step-label">02 · 가입 결정</span><h3>조건 확인 후 선택</h3><p>요금과 혜택을 확인하고 결정해요.</p><div class="step-icon"><span class="emoji" aria-hidden="true">👌</span></div></li>
-        <li class="step"><span class="step-label">03 · 설치</span><h3>설치 후 사은품 안내</h3><p>지급 조건과 일정에 맞춰 안내해요.</p><div class="step-icon"><span class="emoji" aria-hidden="true">🎁</span></div></li>
+      <div class="gift-bow" aria-hidden="true"><svg viewBox="0 0 120 55" fill="none"><path d="M60 47C40 43 10 31 14 15 19-6 54 11 60 47Zm0 0C80 43 110 31 106 15 101-6 66 11 60 47Z" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><ol class="flow">
+        <li class="flow-card fc1"><span class="flow-tag">01 상담</span><h3>내게 맞는<br>혜택 찾기</h3><p>내 조건에 맞는<br>혜택을 안내해요.</p><img src="assets/steps/01-consultation.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async"></li>
+        <li class="flow-card fc2"><span class="flow-tag">02 가입 결정</span><h3>요금·혜택<br>한눈에 비교</h3><p>조건을 확인하고<br>선택해요.</p><img src="assets/steps/02-comparison.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async"></li>
+        <li class="flow-card fc3"><span class="flow-tag">03 설치</span><h3>설치부터<br>사은품까지</h3><p>지급 조건과 일정을<br>안내해요.</p><img src="assets/steps/03-gift.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async"></li>
       </ol>
     </div></section>
     <section class="wrap faq" id="faq" aria-labelledby="faq-title">
@@ -341,7 +361,7 @@ if ('IntersectionObserver' in window) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const groups = [
     ['.consult h2','.consult-visual','.consult-selection','.form-box'],
-    ['.journey h2','.gift-bow','.step'],
+    ['.journey h2','.gift-bow','.flow-card'],
     ['.faq-emoji','.faq h2','.faq details']
   ];
   const targets = [];
