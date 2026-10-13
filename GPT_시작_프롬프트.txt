@@ -14,9 +14,9 @@
 - 수정한 뒤에는 수정된 index.html 전체(또는 바뀐 부분)를 주고, 모바일(375px)과 PC에서 깨지지 않는지 점검해 줘.
 
 [수정본 반영 방법 - 내가 직접 할 일]
-1) GPT가 준 index.html로 C:\Users\user\Downloads\landing-page\index.html 을 교체
+1) GPT가 준 index.html로 C:\Users\user\Desktop\랜딩페이지\index.html 을 교체
 2) 아래 명령 실행 (1~3분 뒤 링크에 반영)
-   cd C:\Users\user\Downloads\landing-page
+   cd C:\Users\user\Desktop\랜딩페이지
    git add index.html
    git commit -m "수정 내용"
    git push origin main

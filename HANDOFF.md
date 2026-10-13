@@ -1,7 +1,7 @@
 # 싹딜 스마트폰 랜딩페이지 — 인수인계 문서
 
 > 이 문서만 읽고 바로 이어서 작업할 수 있도록 정리했습니다. (작성: 2026-10-12, 최신 커밋 `c7a812a`)
-> **작업은 반드시 이 폴더(`C:\Users\user\Downloads\landing-page`)의 `index.html`을 수정**하고, 수정 후 GitHub에 올리면 컨펌 링크에 1~3분 뒤 반영됩니다.
+> **작업은 반드시 이 폴더(`C:\Users\user\Desktop\랜딩페이지`)의 `index.html`을 수정**하고, 수정 후 GitHub에 올리면 컨펌 링크에 1~3분 뒤 반영됩니다.
 
 ---
 
@@ -12,7 +12,7 @@
 | 무엇 | 싹딜(휴대폰 비교·상담) 유입용 스마트폰 랜딩페이지. 단일 HTML 파일, 빌드 도구 없음 |
 | 컨펌용 링크 (화면) | https://rkdid500.github.io/landing-page/ |
 | 소스 저장소 | https://github.com/rkdid500/landing-page (Public, 브랜치 `main`, GitHub Pages 배포) |
-| 로컬 작업 폴더 | `C:\Users\user\Downloads\landing-page\` (git 저장소, `origin` 연결됨) |
+| 로컬 작업 폴더 | `C:\Users\user\Desktop\랜딩페이지\` (git 저장소, `origin` 연결됨) |
 | 운영 중인 본 사이트 | https://sakd.co.kr (싹딜) / 스마트폰 목록: https://sakd.co.kr/smartphone?view=devices |
 | 별도 저장소(참고) | `C:\Users\user\Desktop\SAKD` = https://github.com/rkdid500/SAKD (rkdid500.github.io/SAKD) — 이 랜딩과는 **독립** |
 | 브랜드 / 대표번호 | 싹딜 / 1544-5643 |
@@ -22,7 +22,7 @@
 ## 2. 파일 구조
 
 ```
-landing-page/
+랜딩페이지/
 ├─ index.html        ← 페이지 전체 (HTML + CSS + JS). 여기만 고치면 됨
 ├─ README.md         ← 기능·설정 설명
 ├─ HANDOFF.md        ← 이 문서
@@ -146,14 +146,14 @@ landing-page/
 
 ### 로컬 미리보기
 ```bash
-cd C:\Users\user\Downloads\landing-page
+cd C:\Users\user\Desktop\랜딩페이지
 node serve.js          # http://localhost:5173
 ```
 (또는 `index.html` 더블클릭)
 
 ### 배포 (GitHub Pages)
 ```bash
-cd C:\Users\user\Downloads\landing-page
+cd C:\Users\user\Desktop\랜딩페이지
 git add index.html images/
 git commit -m "변경 내용"
 git push origin main
