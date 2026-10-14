@@ -411,13 +411,22 @@ img.plan-img{display:block;width:100%;height:auto;object-fit:cover;border:0;back
 @media(max-width:360px){.plan-info .fee{font-size:12px}.plan-info .fee b{font-size:17px;margin:0 1px 0 2px}}
 @media(max-width:760px){.plan-card{grid-template-columns:minmax(0,1fr) minmax(0,31%)}.plan-info{padding-right:8px}}
 @media(max-width:360px){.plan-card{grid-template-columns:minmax(0,1fr) minmax(0,29%)}.plan-info{padding-right:4px}}
-.reviews{padding-block:64px 8px;background:#fff}
+.reviews{padding-block:64px 8px;background:#fff;overflow-x:clip}
 .reviews h2{text-align:center;color:#082b46;font-size:30px;font-weight:800;letter-spacing:-.03em;margin:0 0 28px}.reviews h2 span{color:#00ad8a}
 .review-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .review-card{background:#f6fbfa;border:1px solid #dcefe9;border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px;text-align:left}
 .review-stars{color:#ffb400;font-size:17px;letter-spacing:2px}
 .review-text{margin:0;font-size:15px;line-height:1.6;color:#2b3b4a;font-weight:500;word-break:keep-all}
 .review-meta{margin-top:auto;display:flex;flex-direction:column;gap:2px;font-size:13px;color:#5e6e7d}.review-meta b{color:#082b46;font-size:14px}
+.review-marquee{display:flex;flex-direction:column;gap:18px;margin-inline:calc(50% - 50vw);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.review-row{display:flex;width:max-content;animation:review-scroll 45s linear infinite}
+.review-marquee:hover .review-row{animation-play-state:paused}
+.review-track{list-style:none;margin:0;padding:0 9px;display:flex;gap:18px;flex:none}
+.review-track .review-card{width:320px;flex:none;transition:transform .3s,box-shadow .3s}
+.review-track .review-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(8,43,70,.1)}
+@keyframes review-scroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.review-row{animation:none}.review-marquee{overflow-x:auto}}
+@media(max-width:760px){.review-track .review-card{width:250px;padding:20px}.review-row{animation-duration:34s}}
 @media(max-width:760px){.reviews{padding-block:48px 4px}.reviews h2{font-size:23px;margin-bottom:20px}.review-list{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-16px;padding:0 16px 8px;scrollbar-width:none}.review-list::-webkit-scrollbar{display:none}.review-card{flex:0 0 78%;scroll-snap-align:start;padding:20px}.review-text{font-size:14px}}
 @media(max-width:360px){.plan-info dt{font-size:13px}.plan-info .gift{font-size:15px}.plan-info .gift b{font-size:24px}}
 .amt-imgs{display:inline-flex;align-items:flex-end;gap:.02em;vertical-align:bottom}
@@ -510,8 +519,10 @@ img.plan-img{display:block;width:100%;height:auto;object-fit:cover;border:0;back
             <p class="promise-bar">차액의 <u>150%를 즉시 보상</u>해 드립니다</p>
       <p class="promise-note">Q. 차액 130% 보상제도는 어떤 혜택인가요?<br>동일한 날짜와 가입 조건을 기준으로 다른 업체에서 더 높은 사은품을 제공하는 경우,<br>해당 차액의 130%를 추가 보상해 드리는 제도입니다.</p>    </div></section>
     <section class="reviews" aria-labelledby="reviews-title"><div class="wrap">
-      <h2 id="reviews-title">먼저 받아본 고객들의 <span>생생한 후기</span></h2>
-      <ul class="review-list"><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>실제 고객 후기를 받으면 바로 바꿔 넣을게요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>두세 줄 정도의 짧은 후기가 잘 어울려요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>지원금·설치 경험 위주로 넣으면 좋아요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li></ul>
+      <h2 id="reviews-title">직접 경험한 고객님들의 <span>솔직한 후기</span></h2>
+      <div class="review-marquee" role="region" aria-label="고객 후기">
+        <div class="review-row"><ul class="review-track"><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>실제 고객 후기를 받으면 바로 바꿔 넣을게요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>두세 줄 정도의 짧은 후기가 잘 어울려요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>지원금·설치 경험 위주로 넣으면 좋아요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>상담 과정이 어땠는지 적어주세요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>설치 일정과 사은품 수령 후기를 넣어요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li></ul><ul class="review-track" aria-hidden="true"><li class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>실제 고객 후기를 받으면 바로 바꿔 넣을게요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>두세 줄 정도의 짧은 후기가 잘 어울려요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>지원금·설치 경험 위주로 넣으면 좋아요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>상담 과정이 어땠는지 적어주세요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li><li class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">후기 내용이 들어갈 자리예요.<br>설치 일정과 사은품 수령 후기를 넣어요.</p><div class="review-meta"><b>고객명 ○○○</b><span>이용 상품 · 지역</span></div></li></ul></div>
+      </div>
     </div></section>
     <section class="journey friendly-journey" id="journey" aria-labelledby="journey-title"><div class="wrap">
       <h2 id="journey-title">신청 후에는 <span>이렇게 진행돼요</span></h2>
