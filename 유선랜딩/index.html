@@ -420,6 +420,11 @@ img.plan-img{display:block;width:100%;height:auto;object-fit:cover;border:0;back
 .review-meta{margin-top:auto;display:flex;flex-direction:column;gap:2px;font-size:13px;color:#5e6e7d}.review-meta b{color:#082b46;font-size:14px}
 @media(max-width:760px){.reviews{padding-block:48px 4px}.reviews h2{font-size:23px;margin-bottom:20px}.review-list{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:-16px;padding:0 16px 8px;scrollbar-width:none}.review-list::-webkit-scrollbar{display:none}.review-card{flex:0 0 78%;scroll-snap-align:start;padding:20px}.review-text{font-size:14px}}
 @media(max-width:360px){.plan-info dt{font-size:13px}.plan-info .gift{font-size:15px}.plan-info .gift b{font-size:24px}}
+.amt-imgs{display:inline-flex;align-items:flex-end;gap:.02em;vertical-align:bottom}
+.amt-img{display:block;width:auto;animation:amt-hop 3.6s cubic-bezier(.3,.7,.4,1) infinite;animation-delay:calc(var(--i)*.12s);transform-origin:50% 100%}
+.amt-d{height:.78em}.amt-u{height:.3em;margin-bottom:.04em}.amt-imgs .amt-u:nth-child(4){margin-left:.06em}
+@keyframes amt-hop{0%,40%,100%{transform:translateY(0) scale(1,1)}8%{transform:translateY(-.12em) scale(.96,1.05)}16%{transform:translateY(0) scale(1.06,.93)}22%{transform:translateY(-.03em) scale(1,1)}28%{transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.amt-img{animation:none}}
 </style>
 </head>
 <body>
@@ -429,7 +434,7 @@ img.plan-img{display:block;width:100%;height:auto;object-fit:cover;border:0;back
         <div class="hero-copy">
           <img class="hero-wifi" src="assets/internet-wifi.webp" alt="" width="240" height="180">
           <h1 id="hero-title"><em class="hl hl-blue">인터넷</em> 바꾸고,<br>지금까지 <em class="hl">놓쳤던 지원금</em><br><em class="hl hl-blue">싹</em> 받아가세요!</h1>
-          <p class="amount"><span class="benefit-label amount-pre">최대</span><span id="hero-max">138</span><small>만원</small></p>
+          <p class="amount"><span class="benefit-label amount-pre">최대</span><span class="amt-imgs" role="img" aria-label="138만원"><img class="amt-img amt-d" src="assets/amount/1.webp" width="171" height="300" alt="" style="--i:0"><img class="amt-img amt-d" src="assets/amount/3.webp" width="216" height="300" alt="" style="--i:1"><img class="amt-img amt-d" src="assets/amount/8.webp" width="219" height="300" alt="" style="--i:2"><img class="amt-img amt-u" src="assets/amount/man.webp" width="104" height="120" alt="" style="--i:3"><img class="amt-img amt-u" src="assets/amount/won.webp" width="101" height="120" alt="" style="--i:4"></span></p>
           <p class="amount-note">인터넷 + TV + SIM</p>        </div>
         <figure class="hero-art"><span class="spark spark-one" aria-hidden="true">✦</span><span class="spark spark-two" aria-hidden="true">✧</span><span class="spark spark-three" aria-hidden="true">✦</span><span class="glass-tile tile-one" aria-hidden="true"><img src="assets/icons/wifi.svg" alt="" width="32" height="32"></span>
           <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
@@ -568,6 +573,7 @@ img.plan-img{display:block;width:100%;height:auto;object-fit:cover;border:0;back
     nameInput.addEventListener('input', () => nameInput.setCustomValidity(''));
     /* 첫 화면 숫자: 0 → 최종값 카운트업 (무선랜딩과 같은 방식) */
     (function countUp(el, to){
+      if (!el) return;
       if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = to; return; }
       var t0 = null, dur = 1000;
       el.textContent = 0;
