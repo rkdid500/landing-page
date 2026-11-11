@@ -442,6 +442,20 @@ img.plan-img{display:block;width:100%;height:auto;object-fit:cover;border:0;back
 @media(max-width:760px){.promise .promise-img+.promise-bar{margin-top:20px}}
 .m-br{display:none}
 @media (max-width:760px){.m-br{display:inline}}
+.gifts{background:linear-gradient(180deg,#fff 0%,#f3fbf8 100%);padding-block:56px 40px;color:#082b46}
+.gifts h2{text-align:center;color:#082b46;margin:0 0 28px}.gifts h2 span{color:#00ad8a}
+.gifts .wrap{max-width:900px}
+.gf-group{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:15px;font-weight:700;color:#082b46}
+.gf-group::before{content:"";width:5px;height:16px;border-radius:3px;background:#17e4bb}
+.gf-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.gf-card{min-width:0;background:#fff;border:1px solid #e3eef0;border-radius:18px;padding:10px 10px 14px;box-shadow:0 8px 24px #0b2b4610}
+.gf-thumb{position:relative;display:grid;place-items:center;aspect-ratio:4/3;border-radius:12px;background:radial-gradient(120% 90% at 50% 0%,#f6fffc 0%,#e6f7f3 100%);overflow:hidden}
+.gf-thumb img{position:absolute;inset:0;width:100%;height:100%;padding:5%;box-sizing:border-box;object-fit:contain;mix-blend-mode:multiply}
+.gf-body{min-width:0;padding:0 2px;text-align:center}
+.gf-name{margin:10px 0 0;font-size:14.5px;font-weight:700;line-height:1.35;letter-spacing:-.01em;overflow-wrap:anywhere;text-wrap:balance}
+.gf-free{margin:12px 0 0;padding:11px 8px;border-radius:999px;background:linear-gradient(115deg,#61f5d4,#28dab9);color:#073e38;font-size:15px;font-weight:700;line-height:1.2;text-align:center;box-shadow:0 6px 16px #00d8b327}
+.gf-note{margin:22px 2px 0;font-size:12.5px;line-height:1.5;color:#5f7280}
+@media(min-width:761px){.gifts{padding-block:84px 60px}.gifts h2{margin-bottom:40px}.gf-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.gf-card{padding:14px 14px 18px}.gf-name{font-size:16px}.gf-note{text-align:center}}
 </style>
 </head>
 <body>
@@ -517,6 +531,17 @@ img.plan-img{display:block;width:100%;height:auto;object-fit:cover;border:0;back
       </ul>
     </div></section>
     <!-- 최대 지원금 150% 보상제 -->
+    <section class="gifts" id="gifts" aria-labelledby="gifts-title"><div class="wrap">
+      <h2 id="gifts-title">가입하면 골라 받는<br><span>사은품</span></h2>
+      <p class="gf-group">원하는 사은품을 골라 받기</p>
+      <ul class="gf-grid" aria-label="무료로 받는 사은품">
+        <li class="gf-card"><div class="gf-thumb"><img src="assets/gifts/tv-43.jpg" alt="삼성전자 43인치 4K UHD" loading="lazy" decoding="async"></div><div class="gf-body"><p class="gf-name">삼성전자 43인치 4K UHD</p><p class="gf-free">무료 증정</p></div></li>
+        <li class="gf-card"><div class="gf-thumb"><img src="assets/gifts/stick-vacuum.jpg" alt="LG전자 오브제컬렉션 스틱청소기" loading="lazy" decoding="async"></div><div class="gf-body"><p class="gf-name">LG전자 오브제컬렉션 스틱청소기</p><p class="gf-free">무료 증정</p></div></li>
+        <li class="gf-card"><div class="gf-thumb"><img src="assets/gifts/air-purifier.png" alt="LG 퓨리케어 AI 공기청정기" loading="lazy" decoding="async"></div><div class="gf-body"><p class="gf-name">LG 퓨리케어 AI 공기청정기</p><p class="gf-free">무료 증정</p></div></li>
+        <li class="gf-card"><div class="gf-thumb"><img src="assets/gifts/drum-washer.png" alt="삼성 드럼세탁기 9kg" loading="lazy" decoding="async"></div><div class="gf-body"><p class="gf-name">삼성 드럼세탁기 9kg</p><p class="gf-free">무료 증정</p></div></li>
+      </ul>
+      <p class="gf-note">*가입 상품 통신사에 따라 차이가 있을 수 있습니다.</p>
+    </div></section>
     <section class="promise" aria-label="최대 지원금 150% 보상제"><div class="wrap promise-inner">
       <span class="promise-tag">약속</span>
       <img class="promise-img" src="assets/pinky-promise.webp" alt="" width="400" height="385" loading="lazy" decoding="async">
@@ -637,6 +662,7 @@ if ('IntersectionObserver' in window) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const groups = [
     ['.consult h2','.consult-visual','.consult-selection','.form-box'],
+    ['.gifts h2','.gf-group','.gf-card'],
     ['.journey h2','.gift-bow','.flow-card'],
     ['.faq-emoji','.faq h2','.faq details']
   ];
